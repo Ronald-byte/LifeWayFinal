@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Brand")
+@Table(name="Brands")
 public class Brand implements Serializable{
 
 
@@ -19,34 +19,29 @@ public class Brand implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idBrand;
 	
-	@Column(name = "NBrand", nullable = false, length = 30)
-	private String NBrand;
+	@Column(name = "nameBrand", nullable = false, length = 30)
+	private String nameBrand;
 
-	public Brand(int idBrand, String nBrand) {
+
+	public Brand(int idBrand, String nameBrand) {
 		super();
 		this.idBrand = idBrand;
-		this.NBrand = nBrand;
+		this.nameBrand = nameBrand;
 	}
-
 	public Brand() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	public int getIdBrand() {
 		return idBrand;
 	}
-
 	public void setIdBrand(int idBrand) {
 		this.idBrand = idBrand;
 	}
-
-	public String getNBrand() {
-		return NBrand;
+	public String getNameBrand() {
+		return nameBrand;
 	}
-
-	public void setNBrand(String nBrand) {
-		NBrand = nBrand;
+	public void setNameBrand(String nameBrand) {
+		this.nameBrand = nameBrand;
 	}
-	
 }

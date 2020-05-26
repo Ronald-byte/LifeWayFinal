@@ -19,13 +19,15 @@ public class Status implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idStatus;
 	
-    @Column(name = "NStatus", nullable = false, length = 30)
-    private String NStatus;
+    @Column(name = "nameStatus", nullable = false, length = 30)
+    private String nameStatus;
 
-	public Status(int idStatus, String nStatus) {
+
+
+	public Status(int idStatus, String nameStatus) {
 		super();
 		this.idStatus = idStatus;
-		this.NStatus = nStatus;
+		this.nameStatus = nameStatus;
 	}
 
 	public Status() {
@@ -41,12 +43,13 @@ public class Status implements Serializable{
 		this.idStatus = idStatus;
 	}
 
-	public String getNStatus() {
-		return NStatus;
+	public String getNameStatus() {
+		return nameStatus;
 	}
 
-	public void setNStatus(String nStatus) {
-		NStatus = nStatus;
+	public void setNameStatus(String nameStatus) {
+		this.nameStatus = nameStatus;
 	}
-   
+
+
 }
