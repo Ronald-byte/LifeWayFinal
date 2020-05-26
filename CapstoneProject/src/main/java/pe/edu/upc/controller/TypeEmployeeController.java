@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pe.edu.upc.entity.TypeEmployee;
-import pe.edu.upc.serviceinterfce.ITypeEmployeeService;
+import pe.edu.upc.serviceinterface.ITypeEmployeeService;
 
 @Controller
 @RequestMapping("/typeEmployees")

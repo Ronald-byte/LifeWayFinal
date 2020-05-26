@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import pe.edu.upc.entity.Customer;
 import pe.edu.upc.repository.ICustomerRepository;
-import pe.edu.upc.serviceinterfce.ICustomerService;
+import pe.edu.upc.serviceinterface.ICustomerService;
 
 @Service
 public class CustomerServiceImpl implements ICustomerService {

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import pe.edu.upc.entity.TypeEmployee;
 import pe.edu.upc.repository.ITypeEmployeeRepository;
-import pe.edu.upc.serviceinterfce.ITypeEmployeeService;
+import pe.edu.upc.serviceinterface.ITypeEmployeeService;
 
 @Service
 public class TypeEmployeeServiceImpl implements ITypeEmployeeService {

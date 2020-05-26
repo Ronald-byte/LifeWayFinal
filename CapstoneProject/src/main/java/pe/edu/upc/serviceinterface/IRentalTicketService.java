@@ -1,4 +1,4 @@
-package pe.edu.upc.serviceinterfce;
+package pe.edu.upc.serviceinterface;
 
 import java.util.List;
 

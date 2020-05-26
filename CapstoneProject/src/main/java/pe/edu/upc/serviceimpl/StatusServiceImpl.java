@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import pe.edu.upc.entity.Status;
 import pe.edu.upc.repository.IStatusRepository;
-import pe.edu.upc.serviceinterfce.IStatusService;
+import pe.edu.upc.serviceinterface.IStatusService;
 
 @Service
 public class StatusServiceImpl implements IStatusService{

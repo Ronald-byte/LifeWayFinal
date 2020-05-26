@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pe.edu.upc.entity.Brand;
-import pe.edu.upc.serviceinterfce.IBrandService;
+import pe.edu.upc.serviceinterface.IBrandService;
 
 @Controller
 @RequestMapping("/brand")

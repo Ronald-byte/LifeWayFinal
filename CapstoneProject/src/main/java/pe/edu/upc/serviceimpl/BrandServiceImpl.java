@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import pe.edu.upc.entity.Brand;
 import pe.edu.upc.repository.IBrandRepository;
-import pe.edu.upc.serviceinterfce.IBrandService;
+import pe.edu.upc.serviceinterface.IBrandService;
 
 @Service
 public class BrandServiceImpl implements IBrandService{

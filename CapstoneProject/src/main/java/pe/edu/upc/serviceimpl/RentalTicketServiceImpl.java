@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import pe.edu.upc.entity.RentalTicket;
 import pe.edu.upc.repository.IRentalTicketRepository;
-import pe.edu.upc.serviceinterfce.IRentalTicketService;
+import pe.edu.upc.serviceinterface.IRentalTicketService;
 
 @Service
 public class RentalTicketServiceImpl implements IRentalTicketService{
