@@ -9,40 +9,40 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import pe.edu.upc.entity.Cliente;
-import pe.edu.upc.serviceinterfce.IClienteService;
+import pe.edu.upc.entity.Customer;
+import pe.edu.upc.serviceinterfce.ICustomerService;
 
 
 @Controller
-@RequestMapping("/cliente")
-public class ClienteController {
+@RequestMapping("/customer")
+public class CustomerController {
 	@Autowired
-	private IClienteService cS;
+	private ICustomerService cS;
 	
 	@GetMapping("/new")
-	public String newCliente(Model model) {
-		model.addAttribute("cliente",new Cliente());
-		return "cliente/cliente";
+	public String newCustomer(Model model) {
+		model.addAttribute("customer",new Customer());
+		return "customer/customer";
 	}
 	
 	@PostMapping("/save")
-	public String saveCliente(@Validated Cliente cliente, BindingResult result, Model model) throws Exception{
+	public String saveCustomer(@Validated Customer customer, BindingResult result, Model model) throws Exception{
 		if(result.hasErrors()) {
-			return "cliente/cliente";
+			return "customer/customer";
 		}else {
-			cS.insert(cliente);
-			model.addAttribute("listStatus", cS.list());
-			return "cliente/listCliente";
+			cS.insert(customer);
+			model.addAttribute("listCustomer", cS.list());
+			return "customer/listCustomer";
 		}
 	}
 	
 	@GetMapping("/list")
-	public String listCliente(Model model) {
+	public String listCustomer(Model model) {
 		try {
-			model.addAttribute("listCliente",cS.list());
+			model.addAttribute("listCustomer",cS.list());
 		}catch(Exception e) {
 			model.addAttribute("error",e.getMessage());
 		}
-		return "cliente/listCliente";
+		return "customer/listCustomer";
 	}
 }

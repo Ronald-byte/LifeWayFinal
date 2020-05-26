@@ -7,26 +7,26 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.edu.upc.entity.Cliente;
-import pe.edu.upc.repository.IClienteRepository;
-import pe.edu.upc.serviceinterfce.IClienteService;
+import pe.edu.upc.entity.Customer;
+import pe.edu.upc.repository.ICustomerRepository;
+import pe.edu.upc.serviceinterfce.ICustomerService;
 
 @Service
-public class ClientServiceImpl implements IClienteService {
+public class CustomerServiceImpl implements ICustomerService {
 	
 	@Autowired
-	private IClienteRepository cR;
+	private ICustomerRepository cR;
 	
 	@Transactional
 	@Override
-	public void insert(Cliente cliente) {
-		cR.save(cliente);
+	public void insert(Customer customer) {
+		cR.save(customer);
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public List<Cliente> list() {
+	public List<Customer> list() {
 		// TODO Auto-generated method stub
 		return cR.findAll();
 	}
