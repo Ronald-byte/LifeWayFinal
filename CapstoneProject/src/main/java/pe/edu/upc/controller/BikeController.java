@@ -9,40 +9,44 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import pe.edu.upc.entity.Brand;
-import pe.edu.upc.serviceinterface.IBrandService;
+import pe.edu.upc.entity.Bike;
+import pe.edu.upc.serviceinterface.IBikeService;
 
 @Controller
-@RequestMapping("/brands")
-public class BrandController {
+@RequestMapping("/bikes")
+public class BikeController {
 
 	@Autowired
-	private IBrandService bS;
+	private IBikeService bS;
 	
 	@GetMapping("/new")
-	public String newBrand(Model model) {
-		model.addAttribute("brand",new Brand());
-		return "brand/brand";
+	public String newBike(Model model) {
+		model.addAttribute("bike", new Bike());
+		return "bike/bike";	
 	}
 	
 	@PostMapping("/save")
-	public String saveBrand(@Validated Brand brand, BindingResult result, Model model) throws Exception{
+	public String saveBike(@Validated Bike bike, BindingResult result, Model model) throws Exception{
 		if(result.hasErrors()) {
-			return "brand/brand";
+			return "bike/bike";
 		}else {
-			bS.insert(brand);
-			model.addAttribute("listBrand", bS.list());
-			return "brand/listBrand";
+			bS.insert(bike);
+			model.addAttribute("listBikes", bS.list());
+			return "bike/listBikes";
 		}
+		
 	}
 	
 	@GetMapping("/list")
-	public String listBrand(Model model) {
+	public String listBikes(Model model) {
 		try {
-			model.addAttribute("listBrand",bS.list());
+			model.addAttribute("listBikes", bS.list());
 		}catch(Exception e) {
-			model.addAttribute("error",e.getMessage());
+			model.addAttribute("error", e.getMessage());
 		}
-		return "brand/listBrand";
+		return "bike/listBikes";
+		
+		
 	}
+	
 }

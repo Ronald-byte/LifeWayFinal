@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
-@Table(name="employees")
+@Table(name="Employees")
 public class Employee implements Serializable{
 
 
@@ -24,17 +24,17 @@ public class Employee implements Serializable{
 	@Column(name="nameEmployee",nullable = false,length = 50)
 	private String nameEmployee;
 	
-	@Column(name="paternalSurnameEmployee",nullable = false,length = 50)
+	@Column(name="paternalSurnameEmployee",nullable = false,length = 30)
 	private String paternalSurnameEmployee;
 	
-	@Column(name="maternalSurnameEmployee",nullable = false,length = 50)
+	@Column(name="maternalSurnameEmployee",nullable = false,length = 30)
 	private String maternalSurnameEmployee;
 	
-	@Column(name="emailEmployee",nullable = false,length = 50)
+	@Column(name="emailEmployee",nullable = false,length = 30)
 	private String emailEmployee;
 	
-	@Column(name = "cellphoneEmployee",nullable = false)
-	private int cellphoneEmployee;
+	@Column(name = "phoneNumberEmployee",nullable = false, length = 9)
+	private String phoneNumberEmployee;
 	
 	@ManyToOne
 	@JoinColumn(name = "idTypeEmployee")
@@ -46,14 +46,14 @@ public class Employee implements Serializable{
 	}
 
 	public Employee(int idEmployee, String nameEmployee, String paternalSurnameEmployee, String maternalSurnameEmployee,
-			String emailEmployee, int cellphoneEmployee, TypeEmployee typeEmployee) {
+			String emailEmployee, String phoneNumberEmployee, TypeEmployee typeEmployee) {
 		super();
 		this.idEmployee = idEmployee;
 		this.nameEmployee = nameEmployee;
 		this.paternalSurnameEmployee = paternalSurnameEmployee;
 		this.maternalSurnameEmployee = maternalSurnameEmployee;
 		this.emailEmployee = emailEmployee;
-		this.cellphoneEmployee = cellphoneEmployee;
+		this.phoneNumberEmployee = phoneNumberEmployee;
 		this.typeEmployee = typeEmployee;
 	}
 
@@ -97,12 +97,12 @@ public class Employee implements Serializable{
 		this.emailEmployee = emailEmployee;
 	}
 
-	public int getCellphoneEmployee() {
-		return cellphoneEmployee;
+	public String getPhoneNumberEmployee() {
+		return phoneNumberEmployee;
 	}
 
-	public void setCellphoneEmployee(int cellphoneEmployee) {
-		this.cellphoneEmployee = cellphoneEmployee;
+	public void setPhoneNumberEmployee(String phoneNumberEmployee) {
+		this.phoneNumberEmployee = phoneNumberEmployee;
 	}
 
 	public TypeEmployee getTypeEmployee() {

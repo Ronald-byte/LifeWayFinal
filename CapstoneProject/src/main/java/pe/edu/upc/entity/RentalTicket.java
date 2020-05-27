@@ -10,30 +10,31 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 @Entity
-@Table(name="RentalTicket")
+@Table(name="RentalTickets")
 public class RentalTicket implements Serializable {
  private static final long serialVersionUID = 1L;
  
  @Id
  @GeneratedValue(strategy = GenerationType.IDENTITY)
- private int idRental;
+ private int idRentalTicket;
  
- @Column(name = "DateRental")
- private Date rentalDate;
+ @Column(name = "rentalDateRentalTicket")
+ private Date rentalDateRentalTicket;
  
- @Column(name = "NrHours", nullable = false, length = 30)
- private int numberHours;
+ @Column(name = "numberHoursRentalTicket", nullable = false)
+ private int numberHoursRentalTicket;
  
- @Column(name = "CostRate", nullable = false, length = 30)
- private int costRate;
+ @Column(name = "costRateRentalTicket", nullable = false)
+ private int costRateRentalTicket;
  
  @ManyToOne
  @JoinColumn(name = "idCustomer")
  private Customer customer;
 
- @Column(name = "TotalCost", nullable = false, length = 30)
- private int totalCost;
+ @Column(name = "totalCostRentalTicket", nullable = false)
+ private int totalCostRentalTicket;
 
  @ManyToOne
  @JoinColumn(name = "idBike")
@@ -48,86 +49,100 @@ public RentalTicket() {
 	// TODO Auto-generated constructor stub
 }
 
-public RentalTicket(int idRental, Date rentalDate, int numberHours, int costRate, Customer customer, int totalCost,
+public RentalTicket(int idRentalTicket, Date rentalDateRentalTicket, int numberHoursRentalTicket, int costRateRentalTicket, Customer customer, int totalCostRentalTicket,
 		Bike bike, Employee employee) {
 	super();
-	this.idRental = idRental;
-	this.rentalDate = rentalDate;
-	this.numberHours = numberHours;
-	this.costRate = costRate;
+	this.idRentalTicket = idRentalTicket;
+	this.rentalDateRentalTicket = rentalDateRentalTicket;
+	this.numberHoursRentalTicket = numberHoursRentalTicket;
+	this.costRateRentalTicket = costRateRentalTicket;
 	this.customer = customer;
-	this.totalCost = totalCost;
+	this.totalCostRentalTicket = totalCostRentalTicket;
 	this.bike = bike;
 	this.employee = employee;
 }
 
-public int getIdRental() {
-	return idRental;
-}
 
-public void setIdRental(int idRental) {
-	this.idRental = idRental;
-}
-
-public Date getRentalDate() {
-	return rentalDate;
-}
-
-public void setRentalDate(Date rentalDate) {
-	this.rentalDate = rentalDate;
-}
-
-public int getNumberHours() {
-	return numberHours;
-}
-
-public void setNumberHours(int numberHours) {
-	this.numberHours = numberHours;
-}
-
-public int getCostRate() {
-	return costRate;
-}
-
-public void setCostRate(int costRate) {
-	this.costRate = costRate;
-}
-
-public Customer getCustomer() {
-	return customer;
-}
-
-public void setCustomer(Customer customer) {
-	this.customer = customer;
-}
-
-public int getTotalCost() {
-	return totalCost;
-}
-
-public void setTotalCost(int totalCost) {
-	this.totalCost = totalCost;
-}
-
-public Bike getBike() {
-	return bike;
-}
-
-public void setBike(Bike bike) {
-	this.bike = bike;
-}
-
-public Employee getEmployee() {
-	return employee;
-}
-
-public void setEmployee(Employee employee) {
-	this.employee = employee;
-}
  
  
  
+    public int getIdRentalTicket() {
+        return idRentalTicket;
+    }
+
  
+    public void setIdRentalTicket(int idRentalTicket) {
+        this.idRentalTicket = idRentalTicket;
+    }
+
+
+    public Date getRentalDateRentalTicket() {
+        return rentalDateRentalTicket;
+    }
+
  
+    public void setRentalDateRentalTicket(Date rentalDateRentalTicket) {
+        this.rentalDateRentalTicket = rentalDateRentalTicket;
+    }
+
  
+    public int getNumberHoursRentalTicket() {
+        return numberHoursRentalTicket;
+    }
+
+  
+    public void setNumberHoursRentalTicket(int numberHoursRentalTicket) {
+        this.numberHoursRentalTicket = numberHoursRentalTicket;
+    }
+
+ 
+    public int getCostRateRentalTicket() {
+        return costRateRentalTicket;
+    }
+
+  
+    public void setCostRateRentalTicket(int costRateRentalTicket) {
+        this.costRateRentalTicket = costRateRentalTicket;
+    }
+
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+ 
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+
+    public int getTotalCostRentalTicket() {
+        return totalCostRentalTicket;
+    }
+
+
+    public void setTotalCostRentalTicket(int totalCostRentalTicket) {
+        this.totalCostRentalTicket = totalCostRentalTicket;
+    }
+
+
+    public Bike getBike() {
+        return bike;
+    }
+
+
+    public void setBike(Bike bike) {
+        this.bike = bike;
+    }
+
+ 
+    public Employee getEmployee() {
+        return employee;
+    }
+
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
 }

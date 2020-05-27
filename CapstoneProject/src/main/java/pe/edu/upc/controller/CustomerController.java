@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pe.edu.upc.entity.Customer;
 import pe.edu.upc.serviceinterface.ICustomerService;
 
-
 @Controller
-@RequestMapping("/customer")
+@RequestMapping("/customers")
 public class CustomerController {
+
 	@Autowired
 	private ICustomerService cS;
 	

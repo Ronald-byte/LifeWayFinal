@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "typeEmployees")
+@Table(name = "TypeEmployees")
 public class TypeEmployee implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -19,7 +19,7 @@ public class TypeEmployee implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idTypeEmployee;
 
-	@Column(name = "nameTypeEmployee", nullable = false, length = 20)
+	@Column(name = "nameTypeEmployee", nullable = false, length = 30)
 	private String nameTypeEmployee;
 
 	public TypeEmployee() {
