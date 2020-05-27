@@ -33,11 +33,10 @@
 		<ul
 			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
 			id="accordionSidebar">
-
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				th:href="@{/customers/list}">
+				th:href="@{/typeEmployees/list}">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-leaf"></i>
 				</div>
@@ -46,8 +45,6 @@
 
 			<!-- Divider -->
 			<hr class="sidebar-divider my-0">
-
-
 
 
 			<!-- Nav Item - Pages Collapse Menu -->
@@ -70,11 +67,6 @@
 						<a class="collapse-item" th:href="@{/customers/list}">Clientes</a>
 					</div>
 				</div></li>
-
-
-
-			<!-- Divider -->
-			<hr class="sidebar-divider">
 
 			<!-- Sidebar Toggler (Sidebar) -->
 
@@ -121,6 +113,7 @@
 								class="mr-2 d-none d-lg-inline text-gray-600 small"><img
 									th:src="@{/img/logout.png}" width="30" height="30" alt="logo"
 									align="middle"></img></span>
+
 						</a> <!-- Dropdown - User Information -->
 							<div
 								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -129,8 +122,8 @@
 									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Perfil
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="status/index"
-									data-toggle="modal" data-target="#logoutModal"> <i
+								<a class="dropdown-item" href="#" data-toggle="modal"
+									data-target="#logoutModal"> <i
 									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Cerrar sesión
 								</a>
@@ -145,38 +138,44 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Cliente</h1>
-
-					<a th:href="@{/customers/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
+					<h1 class="h3 mb-4 text-gray-800">Tipo de Empleado</h1>
 
 					<hr class="sidebar-divider">
+					<div th:object="${typeEmployee}" th:remove="tag">
+						<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
+							role="alert">
+							<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+						</ul>
+					</div>
 
-					<table class="table table-striped">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Nombre</th>
-								<th scope="col">Apellido Paterno</th>
-								<th scope="col">Apellido Materno</th>
-								<th scope="col">Correo</th>
-								<th scope="col">Numero</th>
-								<th scope="col">Direccion</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="cate: ${listCustomer}">
-								<td th:text="${cate.idCustomer}"></td>
-								<td th:text="${cate.nameCustomer}"></td>
-								<td th:text="${cate.paternalSurnameCustomer}"></td>
-								<td th:text="${cate.maternalSurnameCustomer}"></td>
-								<td th:text="${cate.emailCustomer}"></td>
-								<td th:text="${cate.phoneNumberCustomer}"></td>
-								<td th:text="${cate.addressCustomer}"></td>
-							</tr>
-						</tbody>
-					</table>
+					<form th:action="@{/typeEmployees/save}" th:object="${typeEmployee}"
+						method="post">
+						<div class="form-group row">
+							<label for="name" class="col-sm-2 col-form-label">Tipo de Empleado</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{nameTypeEmployee}"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('nameTypeEmployee')}"
+									th:errors="*{nameTypeEmployee}"></small>
+							</div>
+						</div>
 
-					<p th:text="${mensaje}" class="form-text text-success"></p>
+
+
+						<div class="form-group row">
+							<div class="col-sm-6">
+								<input type="submit" value="Guardar" class="btn btn-secondary"></input>
+								<a href="/typeEmployees/list" class="btn btn-danger">Cancelar</a>
+							</div>
+						</div>
+
+					</form>
+					<p th:text="${mensaje}"></p>
+
+
+
 
 				</div>
 				<!-- /.container-fluid -->
@@ -219,12 +218,12 @@
 					</button>
 				</div>
 				<div class="modal-body">Seleccione "Cerrar sesión" a
-					continuación si está listo para finalizar su sesión actual.</div>
+					continuación si está listo para finalizar su sesión actual</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" th:href="@{/Status/index}">Cerrar
-						sesión</a>
+					<a class="btn btn-primary" th:href="@{/typeEmployees/index}">Cerrar
+						Sesión</a>
 				</div>
 			</div>
 		</div>

@@ -40,11 +40,11 @@ public class TypeEmployeeController {
 	@GetMapping("/list")
 	public String listTypeEmployees(Model model) {
 		try {
-			model.addAttribute("listTypeEmployees", teS.list());
+			model.addAttribute("listTypeEmployee", teS.list());
 		} catch (Exception e) {
 			// TODO: handle exception
 			model.addAttribute("error", e.getMessage());
 		}
-		return "typeEmployee/listTypeEmployees";
+		return "typeEmployee/listTypeEmployee";
 	}
 }
