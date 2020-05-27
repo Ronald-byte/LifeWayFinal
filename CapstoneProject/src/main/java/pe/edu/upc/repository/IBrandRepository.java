@@ -7,5 +7,7 @@ import pe.edu.upc.entity.Brand;
 
 @Repository
 public interface IBrandRepository extends JpaRepository<Brand, Integer>{
+    
+ 
 
 }
