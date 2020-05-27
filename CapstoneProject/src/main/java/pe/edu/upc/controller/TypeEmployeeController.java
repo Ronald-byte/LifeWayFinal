@@ -42,7 +42,6 @@ public class TypeEmployeeController {
 		try {
 			model.addAttribute("listTypeEmployee", teS.list());
 		} catch (Exception e) {
-			// TODO: handle exception
 			model.addAttribute("error", e.getMessage());
 		}
 		return "typeEmployee/listTypeEmployee";

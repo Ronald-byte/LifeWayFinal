@@ -39,7 +39,7 @@ public class CustomerController {
 	@GetMapping("/list")
 	public String listCustomer(Model model) {
 		try {
-			model.addAttribute("listCustomers",cS.list());
+			model.addAttribute("listCustomer",cS.list());
 		}catch(Exception e) {
 			model.addAttribute("error",e.getMessage());
 		}

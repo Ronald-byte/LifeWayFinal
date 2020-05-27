@@ -55,29 +55,34 @@ public class Customer implements Serializable {
 
 
 
+
+
     public int getIdCustomer() {
         return idCustomer;
     }
 
-
+  
     public void setIdCustomer(int idCustomer) {
         this.idCustomer = idCustomer;
     }
 
+    
     public String getNameCustomer() {
         return nameCustomer;
     }
 
-  
+
     public void setNameCustomer(String nameCustomer) {
         this.nameCustomer = nameCustomer;
     }
 
-
+  
     public String getPaternalSurnameCustomer() {
         return paternalSurnameCustomer;
     }
 
+
+  
     public void setPaternalSurnameCustomer(String paternalSurnameCustomer) {
         this.paternalSurnameCustomer = paternalSurnameCustomer;
     }
@@ -92,31 +97,31 @@ public class Customer implements Serializable {
         this.maternalSurnameCustomer = maternalSurnameCustomer;
     }
 
-    public String getMailCustomer() {
+  
+    public String getEmailCustomer() {
         return emailCustomer;
     }
 
- 
-    public void setMailCustomer(String emailCustomer) {
+
+    public void setEmailCustomer(String emailCustomer) {
         this.emailCustomer = emailCustomer;
     }
 
- 
     public String getPhoneNumberCustomer() {
         return phoneNumberCustomer;
     }
 
-
+    
     public void setPhoneNumberCustomer(String phoneNumberCustomer) {
         this.phoneNumberCustomer = phoneNumberCustomer;
     }
 
-
+ 
     public String getAddressCustomer() {
         return addressCustomer;
     }
 
- 
+  
     public void setAddressCustomer(String addressCustomer) {
         this.addressCustomer = addressCustomer;
     }
