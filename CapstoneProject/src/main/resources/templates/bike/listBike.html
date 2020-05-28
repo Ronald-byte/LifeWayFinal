@@ -37,7 +37,7 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				th:href="@{/status/list}">
+				th:href="@{/bikes/list}">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-leaf"></i>
 				</div>
@@ -132,7 +132,7 @@
 									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Perfil
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="status/index"
+								<a class="dropdown-item" href="bikes/index"
 									data-toggle="modal" data-target="#logoutModal"> <i
 									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Cerrar sesión
@@ -148,9 +148,9 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Estados</h1>
+					<h1 class="h3 mb-4 text-gray-800">Bicicletas</h1>
 
-					<a th:href="@{/status/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
+					<a th:href="@{/bikes/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
 
 					<hr class="sidebar-divider">
 
@@ -158,13 +158,21 @@
 						<thead class="thead-dark">
 							<tr>
 								<th scope="col">Id</th>
-								<th scope="col">Nombre</th>
+								<th scope="col">Marca</th>
+								<th scope="col">Costo</th>
+								<th scope="col">Fecha de Compra</th>
+								<th scope="col">Estado</th>
+
+
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="cate: ${listStatus}">
-								<td th:text="${cate.idStatus}"></td>
-								<td th:text="${cate.nameStatus}"></td>
+							<tr th:each="b: ${listBike}">
+								<td th:text="${b.idBike}"></td>
+								<td th:text="${b.brand.nameBrand}"></td>
+								<td th:text="${b.costBike}"></td>
+								<td th:text="${b.purchaseDateBike}"></td>
+								<td th:text="${b.status.nameStatus}"></td>
 							</tr>
 						</tbody>
 					</table>
@@ -216,7 +224,7 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" th:href="@{/Status/index}">Cerrar
+					<a class="btn btn-primary" th:href="@{/bikes/index}">Cerrar
 						sesión</a>
 				</div>
 			</div>

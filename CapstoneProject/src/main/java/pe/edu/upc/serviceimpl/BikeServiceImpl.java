@@ -19,6 +19,12 @@ public class BikeServiceImpl implements IBikeService {
 	@Autowired
 	private IBikeRepository bR;
 
+	@Override
+	public List<Bike> list() {
+		// TODO Auto-generated method stub
+		return bR.findAll();
+	}
+	
 	@Transactional
 	@Override
 	public void insert(Bike bike) {
@@ -26,10 +32,6 @@ public class BikeServiceImpl implements IBikeService {
 		bR.save(bike);	
 	}
 
-	@Override
-	public List<Bike> list() {
-		// TODO Auto-generated method stub
-		return bR.findAll();
-	}
+
 	
 }

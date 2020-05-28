@@ -12,25 +12,27 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="Bikes")
-public class Bike implements Serializable{
+import org.springframework.format.annotation.DateTimeFormat;
 
+@Entity
+@Table(name = "Bikes")
+public class Bike implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idBike;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idBrand")
 	private Brand brand;
-	
+
 	@Column(name = "costBike", nullable = false)
 	private int costBike;
-	
+
 	@Column(name = "purchaseDateBike", nullable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date purchaseDateBike;
 	
 	@ManyToOne
