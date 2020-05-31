@@ -55,19 +55,25 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/brands/list}">Marcas de Bicicleta</a>
+						<a class="collapse-item" th:href="@{/brands/list}">Marcas de
+							Bicicleta</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/status/list}">Estados de Bicicleta</a>
+						<a class="collapse-item" th:href="@{/status/list}">Estados de
+							Bicicleta</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/typeEmployees/list}">Tipos de Empleado</a>
+						<a class="collapse-item" th:href="@{/typeEmployees/list}">Tipos
+							de Empleado</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/customers/list}">Clientes</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/bikes/list}">Bicicletas</a>
+					</div>
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/employees/list}">Empleados</a>
 					</div>
 				</div></li>
 
@@ -156,8 +162,7 @@
 						<div class="form-group row">
 							<label for="name" class="col-sm-2 col-form-label">Marca</label>
 							<div class="col-sm-6">
-								<input type="text" th:field="*{nameBrand}"
-									class="form-control"
+								<input type="text" th:field="*{nameBrand}" class="form-control"
 									th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('nameBrand')}"

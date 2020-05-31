@@ -19,6 +19,8 @@ public class TypeEmployee implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idTypeEmployee;
 
+	
+	//@Pattern(regexp = "[a-zA-Z]+", message = "El tipo de empleado solo puede tener letras")
 	@Column(name = "nameTypeEmployee", nullable = false, length = 30)
 	private String nameTypeEmployee;
 

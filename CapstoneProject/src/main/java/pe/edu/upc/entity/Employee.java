@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 @Entity
 @Table(name="Employees")
 public class Employee implements Serializable{
@@ -30,6 +31,8 @@ public class Employee implements Serializable{
 	@Column(name="maternalSurnameEmployee",nullable = false,length = 30)
 	private String maternalSurnameEmployee;
 	
+
+	//@Email
 	@Column(name="emailEmployee",nullable = false,length = 30)
 	private String emailEmployee;
 	

@@ -19,9 +19,14 @@ public class TypeEmployeeServiceImpl implements ITypeEmployeeService {
 
 	@Transactional
 	@Override
-	public void insert(TypeEmployee typeEmployee) {
+	public int insert(TypeEmployee typeEmployee) {
 		// TODO Auto-generated method stub
-		teR.save(typeEmployee);
+		int rpta=teR.seachTypeEmployee(typeEmployee.getNameTypeEmployee());
+		if(rpta==0)
+		{
+			teR.save(typeEmployee);
+		}
+		return rpta;
 	}
 
 	@Override
@@ -29,5 +34,6 @@ public class TypeEmployeeServiceImpl implements ITypeEmployeeService {
 		// TODO Auto-generated method stub
 		return teR.findAll();
 	}
+
 
 }

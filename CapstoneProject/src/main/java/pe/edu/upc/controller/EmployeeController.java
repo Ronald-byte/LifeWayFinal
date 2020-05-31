@@ -11,43 +11,53 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import pe.edu.upc.entity.Employee;
 import pe.edu.upc.serviceinterface.IEmployeeService;
+import pe.edu.upc.serviceinterface.ITypeEmployeeService;
 
 @Controller
 @RequestMapping("/employees")
 public class EmployeeController {
-
-    @Autowired
+	
+	@Autowired
 	private IEmployeeService eS;
 	
+	@Autowired
+	private ITypeEmployeeService teS;
+
 	@GetMapping("/new")
 	public String newEmployee(Model model) {
+		model.addAttribute("listTypeEmployees", teS.list());
 		model.addAttribute("employee", new Employee());
-		return "employee/employee";	
+		return "employee/employee";
 	}
-	
+
 	@PostMapping("/save")
-	public String saveEmployee(@Validated Employee employee, BindingResult result, Model model) throws Exception{
-		if(result.hasErrors()) {
+	public String saveEmployee(@Validated Employee employee, BindingResult result, Model model) throws Exception {
+		if (result.hasErrors()) {
+			model.addAttribute("listTypeEmployee",teS.list());
 			return "employee/employee";
-		}else {
-			eS.insert(employee);
-			model.addAttribute("listEmployees", eS.list());
-			return "employee/listEmployees";
+		} else {
+			int rpta = eS.insert(employee);
+			if (rpta > 0) {
+				model.addAttribute("mensaje", "Ya existe el empleado");
+				return "employee/employee";
+			} else {
+				eS.insert(employee);
+				model.addAttribute("mensaje", "Se guardo correctamente");
+				return "employee/employee";
+			}
 		}
-		
+
 	}
-	
+
 	@GetMapping("/list")
 	public String listEmployees(Model model) {
 		try {
-			model.addAttribute("listEmployees", eS.list());
-		}catch(Exception e) {
+			model.addAttribute("listEmployee", eS.list());
+		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
-		return "employee/listEmployees";
-		
-		
+		return "employee/listEmployee";
+
 	}
 
-    
 }

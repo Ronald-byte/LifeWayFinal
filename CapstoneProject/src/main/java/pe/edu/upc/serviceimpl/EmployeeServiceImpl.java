@@ -19,9 +19,13 @@ public class EmployeeServiceImpl implements IEmployeeService{
 
 	@Transactional
 	@Override
-	public void insert(Employee employee) {
+	public int insert(Employee employee) {
 		// TODO Auto-generated method stub
-		eR.save(employee);
+		int rpta=eR.seachProduct(employee.getNameEmployee());
+		if (rpta==0) {
+			eR.save(employee);
+		}
+		return rpta;
 	}
 
 	@Override
@@ -30,4 +34,5 @@ public class EmployeeServiceImpl implements IEmployeeService{
 		return eR.findAll();
 	}
 
+	
 }

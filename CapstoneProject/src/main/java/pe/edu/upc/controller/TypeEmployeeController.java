@@ -26,14 +26,18 @@ public class TypeEmployeeController {
 	}
 
 	@PostMapping("/save")
-	public String saveTypeEmployee(@Validated TypeEmployee typeEmployee, BindingResult result, Model model)
-			throws Exception {
+	public String saveTypeEmployee(@Validated TypeEmployee typeEmployee, BindingResult result, Model model) throws Exception {
 		if (result.hasErrors()) {
 			return "typeEmployee/typeEmployee";
 		} else {
-			teS.insert(typeEmployee);
-			model.addAttribute("listTypeEmployees", teS.list());
-			return "typeEmployee/listTypeEmployee";
+			int rpta=teS.insert(typeEmployee);
+			if (rpta>0) {
+				model.addAttribute("mensaje","Ya existe el Tipo de empleado");
+				return "typeEmployee/typeEmployee";
+			} else {
+				model.addAttribute("listTypeEmployee",teS.list());
+				return "typeEmployee/listTypeEmployee";
+			}
 		}
 	}
 

@@ -6,7 +6,7 @@ import pe.edu.upc.entity.Employee;
 
 public interface IEmployeeService {
 	
-	public void insert(Employee employee);
+	public int insert(Employee employee);
 	
 	List<Employee> list();
 
