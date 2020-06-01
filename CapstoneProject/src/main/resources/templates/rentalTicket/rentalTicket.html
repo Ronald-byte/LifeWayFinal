@@ -36,7 +36,7 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				th:href="@{/typeEmployees/list}">
+				th:href="@{/rentalTickets/list}">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-leaf"></i>
 				</div>
@@ -150,36 +150,101 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Tipo de Empleado</h1>
+					<h1 class="h3 mb-4 text-gray-800">Boleta de Alquiler</h1>
 
 					<hr class="sidebar-divider">
-					<div th:object="${typeEmployee}" th:remove="tag">
+					<div th:object="${rentalTickets}" th:remove="tag">
 						<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
 							role="alert">
 							<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
 						</ul>
 					</div>
 
-					<form th:action="@{/typeEmployees/save}" th:object="${typeEmployee}"
-						method="post">
+					<form th:action="@{/rentalTickets/save}" th:object="${rentalTickets}" method="post">
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Tipo de Empleado</label>
+							<label for="date" class="col-sm-2 col-form-label">Fecha de Alquiler</label>
 							<div class="col-sm-6">
-								<input type="text" th:field="*{nameTypeEmployee}"
+								<input type="date" th:field="*{rentalDateRentalTicket}"
 									class="form-control"
 									th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
-									th:if="${#fields.hasErrors('nameTypeEmployee')}"
-									th:errors="*{nameTypeEmployee}"></small>
+									th:if="${#fields.hasErrors('rentalDateRentalTicket')}"
+									th:errors="*{rentalDateRentalTicket}"></small>
 							</div>
 						</div>
-
-
-
+						<div class="form-group row">
+							<label for="number" class="col-sm-2 col-form-label">Horas de Alquiler</label>
+							<div class="col-sm-6">
+								<input type="number" th:field="*{numberHoursRentalTicket}"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('numberHoursRentalTicket')}"
+									th:errors="*{numberHoursRentalTicket}"></small>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="cost" class="col-sm-2 col-form-label">Tarifa Alquiler</label>
+							<div class="col-sm-6">
+								<input type="number" th:field="*{costRateRentalTicket}"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('costRateRentalTicket')}"
+									th:errors="*{costRateRentalTicket}"></small>
+							</div>
+						</div>						
+						<div class="form-group row">
+							<label for="customer" class="col-sm-2 col-form-label">Cliente</label>
+							<div class="col-sm-6">
+								<select class="form-control" th:field="*{customer.idCustomer}">
+									<option th:each="l: ${listCustomer}" th:value="${l.idCustomer}"
+										th:text="${l.nameCustomer}"
+										th:selected="(${l.idCustomer} == *{customer.idCustomer})"></option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label for="numer" class="col-sm-2 col-form-label">Monto Total</label>
+							<div class="col-sm-6">
+								<input type="number" th:field="*{totalCostRentalTicket}"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('totalCostRentalTicket')}"
+									th:errors="*{totalCostRentalTicket}"></small>
+							</div>
+						</div>
+						
+						
+						
+						<div class="form-group row">
+							<label for="bike" class="col-sm-2 col-form-label">Marca de Bicicleta</label>
+							<div class="col-sm-6">
+								<select class="form-control" th:field="*{bike.idBike}">
+									<option th:each="b: ${listBike}" th:value="${b.idBike}"
+										th:text="${b.idBike}"
+										th:selected="(${b.idBike} == *{bike.idBike})"></option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="employee" class="col-sm-2 col-form-label">Trabajador Asignado</label>
+							<div class="col-sm-6">
+								<select class="form-control" th:field="*{employee.idEmployee}">
+									<option th:each="e: ${listEmployee}" th:value="${e.idEmployee}"
+										th:text="${e.nameEmployee}"
+										th:selected="(${e.idEmployee} == *{employee.idEmployee})"></option>
+								</select>
+							</div>
+						</div>
+				</div>
+				
 						<div class="form-group row">
 							<div class="col-sm-6">
 								<input type="submit" value="Guardar" class="btn btn-secondary"></input>
-								<a href="/typeEmployees/list" class="btn btn-danger">Cancelar</a>
+								<a href="/rentalTickets/list" class="btn btn-danger">Cancelar</a>
 							</div>
 						</div>
 
@@ -234,7 +299,7 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" th:href="@{/typeEmployees/index}">Cerrar
+					<a class="btn btn-primary" th:href="@{/rentalTickets/index}">Cerrar
 						Sesión</a>
 				</div>
 			</div>

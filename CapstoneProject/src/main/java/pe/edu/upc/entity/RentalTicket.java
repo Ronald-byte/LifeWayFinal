@@ -49,8 +49,8 @@ public RentalTicket() {
 	// TODO Auto-generated constructor stub
 }
 
-public RentalTicket(int idRentalTicket, Date rentalDateRentalTicket, int numberHoursRentalTicket, int costRateRentalTicket, Customer customer, int totalCostRentalTicket,
-		Bike bike, Employee employee) {
+public RentalTicket(int idRentalTicket, Date rentalDateRentalTicket, int numberHoursRentalTicket,
+		int costRateRentalTicket, Customer customer, int totalCostRentalTicket, Bike bike, Employee employee) {
 	super();
 	this.idRentalTicket = idRentalTicket;
 	this.rentalDateRentalTicket = rentalDateRentalTicket;
@@ -62,87 +62,69 @@ public RentalTicket(int idRentalTicket, Date rentalDateRentalTicket, int numberH
 	this.employee = employee;
 }
 
+public int getIdRentalTicket() {
+	return idRentalTicket;
+}
 
- 
- 
- 
-    public int getIdRentalTicket() {
-        return idRentalTicket;
-    }
+public void setIdRentalTicket(int idRentalTicket) {
+	this.idRentalTicket = idRentalTicket;
+}
 
- 
-    public void setIdRentalTicket(int idRentalTicket) {
-        this.idRentalTicket = idRentalTicket;
-    }
+public Date getRentalDateRentalTicket() {
+	return rentalDateRentalTicket;
+}
 
+public void setRentalDateRentalTicket(Date rentalDateRentalTicket) {
+	this.rentalDateRentalTicket = rentalDateRentalTicket;
+}
 
-    public Date getRentalDateRentalTicket() {
-        return rentalDateRentalTicket;
-    }
+public int getNumberHoursRentalTicket() {
+	return numberHoursRentalTicket;
+}
 
- 
-    public void setRentalDateRentalTicket(Date rentalDateRentalTicket) {
-        this.rentalDateRentalTicket = rentalDateRentalTicket;
-    }
+public void setNumberHoursRentalTicket(int numberHoursRentalTicket) {
+	this.numberHoursRentalTicket = numberHoursRentalTicket;
+}
 
- 
-    public int getNumberHoursRentalTicket() {
-        return numberHoursRentalTicket;
-    }
+public int getCostRateRentalTicket() {
+	return costRateRentalTicket;
+}
 
-  
-    public void setNumberHoursRentalTicket(int numberHoursRentalTicket) {
-        this.numberHoursRentalTicket = numberHoursRentalTicket;
-    }
+public void setCostRateRentalTicket(int costRateRentalTicket) {
+	this.costRateRentalTicket = costRateRentalTicket;
+}
 
- 
-    public int getCostRateRentalTicket() {
-        return costRateRentalTicket;
-    }
+public Customer getCustomer() {
+	return customer;
+}
 
-  
-    public void setCostRateRentalTicket(int costRateRentalTicket) {
-        this.costRateRentalTicket = costRateRentalTicket;
-    }
+public void setCustomer(Customer customer) {
+	this.customer = customer;
+}
 
+public int getTotalCostRentalTicket() {
+	return totalCostRentalTicket;
+}
 
-    public Customer getCustomer() {
-        return customer;
-    }
+public void setTotalCostRentalTicket(int totalCostRentalTicket) {
+	this.totalCostRentalTicket = totalCostRentalTicket;
+}
 
- 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+public Bike getBike() {
+	return bike;
+}
 
+public void setBike(Bike bike) {
+	this.bike = bike;
+}
 
-    public int getTotalCostRentalTicket() {
-        return totalCostRentalTicket;
-    }
+public Employee getEmployee() {
+	return employee;
+}
 
+public void setEmployee(Employee employee) {
+	this.employee = employee;
+}
 
-    public void setTotalCostRentalTicket(int totalCostRentalTicket) {
-        this.totalCostRentalTicket = totalCostRentalTicket;
-    }
-
-
-    public Bike getBike() {
-        return bike;
-    }
-
-
-    public void setBike(Bike bike) {
-        this.bike = bike;
-    }
-
- 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
 
 }
