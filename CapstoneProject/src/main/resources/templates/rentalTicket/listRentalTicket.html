@@ -174,14 +174,14 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="r: ${listRentalTickets}">
+							<tr th:each="r: ${listRentalTicket}">
 								<td th:text="${r.idRentalTicket}"></td>
 								<td th:text="${r.rentalDateRentalTicket}"></td>
 								<td th:text="${r.numberHoursRentalTicket}"></td>
 								<td th:text="${r.costRateRentalTicket}"></td>
 								<td th:text="${r.customer.nameCustomer}"></td>
 								<td th:text="${r.totalCostRentalTicket}"></td>
-								<td th:text="${r.bike.idBike}"></td>
+								<td th:text="${r.bike.idBike}"></td>								
 								<td th:text="${r.employee.nameEmployee}"></td>
 							</tr>
 						</tbody>

@@ -53,7 +53,7 @@ public class RentalTicketController {
 	}
 	
 	@GetMapping("/list")
-	public String listRentalTickets(Model model) {
+	public String listRentalTicket(Model model) {
 		try {
 			model.addAttribute("listRentalTicket", rtS.list());
 		}catch(Exception e) {
