@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Customers")
@@ -18,23 +20,28 @@ public class Customer implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCustomer;
-
+	
+	@Pattern(regexp = "[a-zA-Z]+", message = "El nombre solo puede tener caracteres")
     @Column(name = "nameCustomer", nullable = false, length = 30)
     private String nameCustomer;
-    
+	
+	@Pattern(regexp = "[a-zA-Z]+", message = "El apellido paterno solo puede tener caracteres")
     @Column(name = "paternalSurnameCustomer", nullable = false, length = 30)
     private String paternalSurnameCustomer;
     
+	@Pattern(regexp = "[a-zA-Z]+", message = "El apellido materno solo puede tener caracteres")
     @Column(name = "maternalSurnameCustomer", nullable = false, length = 30)
     private String maternalSurnameCustomer;
     
     @Column(name = "emailCustomer", nullable = false, length = 30)
     private String emailCustomer;
     
+	@Pattern(regexp = "[0-9]+", message = "El número de telefono solo puede tener valores numericos")
+	@Size(max = 9, message = "El numero de telefono puede tener como maximo 9 caracteres")
     @Column(name = "phoneNumberCustomer", nullable = false, length = 9)
     private String phoneNumberCustomer;
 
-    @Column(name = "addressCustomer", nullable = false, length = 50)
+	@Column(name = "addressCustomer", nullable = false, length = 50)
     private String addressCustomer;
 
 
