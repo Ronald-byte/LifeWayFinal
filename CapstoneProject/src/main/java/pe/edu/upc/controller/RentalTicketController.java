@@ -30,23 +30,22 @@ public class RentalTicketController {
 	
 	@GetMapping("/new")
 	public String newRentalTicket(Model model) {	
-		model.addAttribute("listCustomer", cS.list());
-		model.addAttribute("listBike", bS.list());
-		model.addAttribute("listEmployee", eS.list());
-		model.addAttribute("rentalTickets", new RentalTicket());
+		model.addAttribute("listCustomers", cS.list());
+		model.addAttribute("listBikes", bS.list());
+		model.addAttribute("listEmployees", eS.list());
+		model.addAttribute("rentalTicket", new RentalTicket());
 		return "rentalTicket/rentalTicket";	
 	}
 	
 	@PostMapping("/save")
 	public String saveRentalTicket(@Validated RentalTicket rentalTicket, BindingResult result, Model model) throws Exception{
 		if(result.hasErrors()) {
-			model.addAttribute("listCustomer", cS.list());
-			model.addAttribute("listBike", bS.list());
-			model.addAttribute("listEmployee", eS.list());
+			model.addAttribute("listCustomers", cS.list());
 			return "rentalTicket/rentalTicket";
 		}else {
 			rtS.insert(rentalTicket);
 			model.addAttribute("listRentalTicket", rtS.list());
+			model.addAttribute("mensaje","Se registró ticket de alquiler correctamente");
 			return "rentalTicket/listRentalTicket";
 		}
 		

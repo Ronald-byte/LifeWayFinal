@@ -10,6 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+
 
 @Entity
 @Table(name="RentalTickets")
@@ -21,13 +27,14 @@ public class RentalTicket implements Serializable {
  private int idRentalTicket;
  
  @Column(name = "rentalDateRentalTicket")
+ @DateTimeFormat(pattern = "yyyy-MM-dd")
  private Date rentalDateRentalTicket;
  
  @Column(name = "numberHoursRentalTicket", nullable = false)
  private int numberHoursRentalTicket;
  
  @Column(name = "costRateRentalTicket", nullable = false)
- private int costRateRentalTicket;
+ private int costRateRentalTicket = 5; 
  
  @ManyToOne
  @JoinColumn(name = "idCustomer")
