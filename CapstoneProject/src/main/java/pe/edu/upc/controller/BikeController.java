@@ -25,8 +25,11 @@ public class BikeController {
 	@Autowired
 	private IStatusService sS;
 	
+	
+
 	@GetMapping("/new")
 	public String newBike(Model model) {
+
 		model.addAttribute("listBrands", brS.list());
 		model.addAttribute("listStatus", sS.list());
 		model.addAttribute("bike", new Bike());

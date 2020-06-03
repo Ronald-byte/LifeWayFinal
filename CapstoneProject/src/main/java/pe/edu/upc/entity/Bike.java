@@ -29,7 +29,7 @@ public class Bike implements Serializable {
 	private Brand brand;
 
 	@Column(name = "costBike", nullable = false)
-	private int costBike;
+	private float costBike;
 
 	@Column(name = "purchaseDateBike", nullable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -39,7 +39,7 @@ public class Bike implements Serializable {
 	@JoinColumn(name = "idStatus")
 	private Status status;
 	
-	public Bike(int idBike, Brand brand, int costBike, Date purchaseDateBike, Status status) {
+	public Bike(int idBike, Brand brand, float costBike, Date purchaseDateBike, Status status) {
 		super();
 		this.idBike = idBike;
 		this.brand = brand;
@@ -70,11 +70,11 @@ public class Bike implements Serializable {
 		this.brand = brand;
 	}
 
-	public int getCostBike() {
+	public float getCostBike() {
 		return costBike;
 	}
 
-	public void setCostBike(int costBike) {
+	public void setCostBike(float costBike) {
 		this.costBike = costBike;
 	}
 	

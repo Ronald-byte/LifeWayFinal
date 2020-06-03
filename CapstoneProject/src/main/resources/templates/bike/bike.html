@@ -172,7 +172,7 @@
 						<div class="form-group row">
 							<label for="cost" class="col-sm-2 col-form-label">Costo:</label>
 							<div class="col-sm-6">
-								<input type="number" th:field="*{costBike}" class="form-control"
+								<input type="number" step="any" min="0" th:field="*{costBike}" class="form-control"
 									th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('costBike')}"
