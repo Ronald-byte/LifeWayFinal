@@ -36,11 +36,8 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				th:href="@{/typeEmployees/list}">
-				<div class="sidebar-brand-icon rotate-n-15">
-					<i class="fas fa-leaf"></i>
-				</div>
-				<div class="sidebar-brand-text mx-2">LifeWay</div>
+				th:href="@{/typeEmployees/list}"> <img th:src="@{/img/logo.png}"
+				width="190" height="60" alt="logo" align="middle"></img>
 			</a>
 
 			<!-- Divider -->
@@ -76,7 +73,8 @@
 						<a class="collapse-item" th:href="@{/employees/list}">Empleados</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/rentalTickets/list}">Boleta de Alquiler</a>
+						<a class="collapse-item" th:href="@{/rentalTickets/list}">Boleta
+							de Alquiler</a>
 					</div>
 				</div></li>
 
@@ -174,8 +172,8 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="paternalSurnameEmployee" class="col-sm-2 col-form-label">Apellido
-								Paterno</label>
+							<label for="paternalSurnameEmployee"
+								class="col-sm-2 col-form-label">Apellido Paterno</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{paternalSurnameEmployee}"
 									class="form-control"
@@ -186,8 +184,8 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="maternalSurnameEmployee" class="col-sm-2 col-form-label">Apellido
-								Materno</label>
+							<label for="maternalSurnameEmployee"
+								class="col-sm-2 col-form-label">Apellido Materno</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{maternalSurnameEmployee}"
 									class="form-control"
@@ -220,11 +218,12 @@
 									th:errors="*{phoneNumberEmployee}"></small>
 							</div>
 						</div>
-						
+
 						<div class="form-group row">
 							<label for="typeEmployee">Tipo de empleado:</label>
 							<div class="col-sm-6">
-								<select class="form-control" th:field="*{typeEmployee.idTypeEmployee}">
+								<select class="form-control"
+									th:field="*{typeEmployee.idTypeEmployee}">
 									<option th:each="c: ${listTypeEmployees}"
 										th:value="${c.idTypeEmployee}" th:text="${c.nameTypeEmployee}"
 										th:selected="(${c.idTypeEmployee} == *{typeEmployee.idTypeEmployee})"></option>

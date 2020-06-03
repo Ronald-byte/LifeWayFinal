@@ -37,11 +37,8 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				th:href="@{/status/list}">
-				<div class="sidebar-brand-icon rotate-n-15">
-					<i class="fas fa-leaf"></i>
-				</div>
-				<div class="sidebar-brand-text mx-2">LifeWay</div>
+				th:href="@{/status/list}"> <img th:src="@{/img/logo.png}"
+				width="190" height="60" alt="logo" align="middle"></img>
 			</a>
 
 			<!-- Divider -->
@@ -58,13 +55,16 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/brands/list}">Marcas de Bicicleta</a>
+						<a class="collapse-item" th:href="@{/brands/list}">Marcas de
+							Bicicleta</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/status/list}">Estados de Bicicleta</a>
+						<a class="collapse-item" th:href="@{/status/list}">Estados de
+							Bicicleta</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/typeEmployees/list}">Tipos de Empleado</a>
+						<a class="collapse-item" th:href="@{/typeEmployees/list}">Tipos
+							de Empleado</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/customers/list}">Clientes</a>
@@ -76,7 +76,8 @@
 						<a class="collapse-item" th:href="@{/employees/list}">Empleados</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/rentalTickets/list}">Boleta de Alquiler</a>
+						<a class="collapse-item" th:href="@{/rentalTickets/list}">Boleta
+							de Alquiler</a>
 					</div>
 				</div></li>
 
@@ -138,8 +139,8 @@
 									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Perfil
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="status/index"
-									data-toggle="modal" data-target="#logoutModal"> <i
+								<a class="dropdown-item" href="status/index" data-toggle="modal"
+									data-target="#logoutModal"> <i
 									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Cerrar sesión
 								</a>

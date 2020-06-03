@@ -36,11 +36,8 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				th:href="@{/status/list}">
-				<div class="sidebar-brand-icon rotate-n-15">
-					<i class="fas fa-leaf"></i>
-				</div>
-				<div class="sidebar-brand-text mx-2">LifeWay</div>
+				th:href="@{/status/list}"> <img th:src="@{/img/logo.png}"
+				width="190" height="60" alt="logo" align="middle"></img>
 			</a>
 
 			<!-- Divider -->
@@ -76,7 +73,8 @@
 						<a class="collapse-item" th:href="@{/employees/list}">Empleados</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/rentalTickets/list}">Boleta de Alquiler</a>
+						<a class="collapse-item" th:href="@{/rentalTickets/list}">Boleta
+							de Alquiler</a>
 					</div>
 				</div></li>
 
@@ -165,8 +163,7 @@
 						<div class="form-group row">
 							<label for="name" class="col-sm-2 col-form-label">Estado</label>
 							<div class="col-sm-6">
-								<input type="text" th:field="*{nameStatus}"
-									class="form-control"
+								<input type="text" th:field="*{nameStatus}" class="form-control"
 									th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('nameStatus')}"
@@ -253,4 +250,5 @@
 
 </body>
 
-</html>>
+</html>
+>
