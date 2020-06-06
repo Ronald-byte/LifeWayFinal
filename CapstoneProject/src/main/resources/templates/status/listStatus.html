@@ -166,12 +166,18 @@
 							<tr>
 								<th scope="col">Id</th>
 								<th scope="col">Nombre</th>
+								<th scope="col">Operación</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="cate: ${listStatus}">
 								<td th:text="${cate.idStatus}"></td>
 								<td th:text="${cate.nameStatus}"></td>
+								<td> 
+								<a th:href="@{'/status/irupdate/'+${cate.idStatus}}">
+								<i class="iconf fa fa-pen" style="color:green"></i>
+								</a>
+								</td>
 							</tr>
 						</tbody>
 					</table>

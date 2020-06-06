@@ -1,6 +1,7 @@
 package pe.edu.upc.serviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -29,6 +30,12 @@ public class StatusServiceImpl implements IStatusService{
 	public List<Status> list() {
 		// TODO Auto-generated method stub
 		return sR.findAll();
+	}
+
+	@Transactional
+	@Override
+	public Optional<Status> searchId(int idStatus) {
+		return sR.findById(idStatus);
 	}
 
 }

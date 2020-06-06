@@ -160,6 +160,20 @@
 
 					<form th:action="@{/status/save}" th:object="${status}"
 						method="post">
+						
+						<div class="form-group row">
+							<label for="name" class="col-sm-2 col-form-label">ID</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{idStatus}"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('idStatus')}"
+									th:errors="*{idStatus}"></small>
+							</div>
+						</div>
+						
+						
 						<div class="form-group row">
 							<label for="name" class="col-sm-2 col-form-label">Estado</label>
 							<div class="col-sm-6">

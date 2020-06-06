@@ -1,6 +1,7 @@
 package pe.edu.upc.serviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -29,6 +30,12 @@ public class BrandServiceImpl implements IBrandService{
 	public List<Brand> list() {
 		// TODO Auto-generated method stub
 		return bR.findAll();
+	}
+
+	@Transactional
+	@Override
+	public Optional<Brand> searchId(int idBrand) {
+		return bR.findById(idBrand);
 	}
 	
 	

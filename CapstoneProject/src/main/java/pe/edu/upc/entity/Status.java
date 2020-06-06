@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name="Status")
@@ -19,6 +20,7 @@ public class Status implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idStatus;
 	
+	@Pattern(regexp = "[a-zA-Z]+", message = "El nombre solo puede tener caracteres")
     @Column(name = "nameStatus", nullable = false, length = 30)
     private String nameStatus;
 
