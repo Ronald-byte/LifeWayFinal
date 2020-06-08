@@ -9,7 +9,7 @@ import pe.edu.upc.entity.TypeEmployee;
 
 @Repository
 public interface ITypeEmployeeRepository extends JpaRepository<TypeEmployee, Integer> {
-	@Query("select count(c.nameTypeEmployee) from TypeEmployee c where c.nameTypeEmployee=UPPER(:nameTypeEmployee) or c.nameTypeEmployee=LOWER(:nameTypeEmployee)")
+	@Query("select count(c.nameTypeEmployee) from TypeEmployee c where c.nameTypeEmployee=UPPER(:nameTypeEmployee) or c.nameTypeEmployee=LOWER(:nameTypeEmployee) or c.nameTypeEmployee=:nameTypeEmployee")
 	public int seachTypeEmployee(@Param("nameTypeEmployee") String nombre);
 
 }

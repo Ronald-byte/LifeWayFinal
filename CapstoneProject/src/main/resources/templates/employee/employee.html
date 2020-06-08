@@ -151,12 +151,7 @@
 					<h1 class="h3 mb-4 text-gray-800">Empleado</h1>
 
 					<hr class="sidebar-divider">
-					<div th:object="${employee}" th:remove="tag">
-						<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
-							role="alert">
-							<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
-						</ul>
-					</div>
+					
 
 					<form th:action="@{/employees/save}" th:object="${employee}"
 						method="post">
@@ -218,7 +213,18 @@
 									th:errors="*{phoneNumberEmployee}"></small>
 							</div>
 						</div>
-
+						<div class="form-group row">
+							<label for="dni" class="col-sm-2 col-form-label">Número
+								de DNI</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{dniEmployee}"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('dniEmployee')}"
+									th:errors="*{dniEmployee}"></small>
+							</div>
+						</div>
 						<div class="form-group row">
 							<label for="typeEmployee">Tipo de empleado:</label>
 							<div class="col-sm-6">

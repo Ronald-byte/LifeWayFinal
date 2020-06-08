@@ -33,17 +33,19 @@ public class EmployeeController {
 	@PostMapping("/save")
 	public String saveEmployee(@Validated Employee employee, BindingResult result, Model model) throws Exception {
 		if (result.hasErrors()) {
-			model.addAttribute("listTypeEmployee",teS.list());
+			model.addAttribute("listTypeEmployees",teS.list());
 			return "employee/employee";
 		} else {
 			int rpta = eS.insert(employee);
 			if (rpta > 0) {
+				model.addAttribute("listTypeEmployees",teS.list());
 				model.addAttribute("mensaje", "Ya existe el empleado");
 				return "employee/employee";
 			} else {
 				eS.insert(employee);
 				model.addAttribute("mensaje", "Se guardo correctamente");
-				return "employee/employee";
+				model.addAttribute("listTypeEmployees",teS.list());
+				return "redirect:/employees/list";
 			}
 		}
 

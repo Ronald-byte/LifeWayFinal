@@ -151,12 +151,7 @@
 					<h1 class="h3 mb-4 text-gray-800">Tipo de Empleado</h1>
 
 					<hr class="sidebar-divider">
-					<div th:object="${typeEmployee}" th:remove="tag">
-						<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
-							role="alert">
-							<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
-						</ul>
-					</div>
+					
 
 					<form th:action="@{/typeEmployees/save}"
 						th:object="${typeEmployee}" method="post">

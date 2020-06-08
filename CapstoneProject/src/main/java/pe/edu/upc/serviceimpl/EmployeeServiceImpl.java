@@ -21,7 +21,7 @@ public class EmployeeServiceImpl implements IEmployeeService{
 	@Override
 	public int insert(Employee employee) {
 		// TODO Auto-generated method stub
-		int rpta=eR.seachProduct(employee.getNameEmployee());
+		int rpta=eR.seachDni(employee.getDniEmployee());
 		if (rpta==0) {
 			eR.save(employee);
 		}
