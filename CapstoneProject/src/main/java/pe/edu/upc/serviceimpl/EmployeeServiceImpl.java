@@ -1,6 +1,7 @@
 package pe.edu.upc.serviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -33,6 +34,20 @@ public class EmployeeServiceImpl implements IEmployeeService{
 		// TODO Auto-generated method stub
 		return eR.findAll();
 	}
+
+	@Transactional
+	@Override
+	public void delete(int idEmployee) {
+		// TODO Auto-generated method stub
+		eR.deleteById(idEmployee);
+	}
+
+	@Override
+	public Optional<Employee> searchId(int idEmployee) {
+		// TODO Auto-generated method stub
+		return eR.findById(idEmployee);
+	}
+	
 
 	
 }
