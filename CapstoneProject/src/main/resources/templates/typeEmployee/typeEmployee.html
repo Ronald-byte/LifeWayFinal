@@ -155,6 +155,18 @@
 
 					<form th:action="@{/typeEmployees/save}"
 						th:object="${typeEmployee}" method="post">
+						
+						<div class="form-group row">
+							<label for="name" class="col-sm-2 col-form-label">ID</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{idTypeEmployee}"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('idTypeEmployee')}"
+									th:errors="*{idTypeEmployee}"></small>
+							</div>
+						</div>
 						<div class="form-group row">
 							<label for="name" class="col-sm-2 col-form-label">Tipo de
 								Empleado</label>

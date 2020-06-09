@@ -42,13 +42,12 @@ public class EmployeeController {
 		} else {
 			int rpta = eS.insert(employee);
 			if (rpta > 0) {
-				model.addAttribute("listTypeEmployees", teS.list());
 				model.addAttribute("mensaje", "Ya existe el empleado");
 				return "employee/employee";
 			} else {
 				eS.insert(employee);
 				model.addAttribute("mensaje", "Se guardo correctamente");
-				model.addAttribute("listTypeEmployees", teS.list());
+				model.addAttribute("listEmployees", eS.list());
 				return "redirect:/employees/list";
 			}
 		}
@@ -84,7 +83,6 @@ public class EmployeeController {
 
 	@RequestMapping("/irupdate/{id}")
 	public String irUpdate(@PathVariable int id, Model model, RedirectAttributes objRedir) {
-		// trae la data de el id
 		Optional<Employee> objEmp = eS.searchId(id);
 		if (objEmp == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error al actualizar");
