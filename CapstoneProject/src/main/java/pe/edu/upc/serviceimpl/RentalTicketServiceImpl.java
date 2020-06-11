@@ -32,6 +32,12 @@ public class RentalTicketServiceImpl implements IRentalTicketService{
 		return rTR.findAll();
 	}
 	
+	@Transactional
+	@Override
+	public void delete(int idRentalTicket) {
+		rTR.deleteById(idRentalTicket);
+	}
+
 	
 	
 }

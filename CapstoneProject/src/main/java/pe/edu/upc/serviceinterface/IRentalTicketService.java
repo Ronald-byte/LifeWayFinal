@@ -8,4 +8,7 @@ public interface IRentalTicketService {
 
 	public void insert(RentalTicket rentalticket);
 	List<RentalTicket>list();
+	
+	public void delete(int idRentalTicket);
+
 }

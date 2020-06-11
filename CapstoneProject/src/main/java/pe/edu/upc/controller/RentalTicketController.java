@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -63,5 +64,33 @@ public class RentalTicketController {
 		
 	}
 
+	
+	
+	@RequestMapping("/delete/{id}")
+	public String deleteRentalTicket(Model model, @PathVariable(value = "id") int id) {
+		try {
+			if (id > 0) {
+				rtS.delete(id);
+				model.addAttribute("listRentalTickets", rtS.list());
+				model.addAttribute("rentalTicket", new RentalTicket());
+				model.addAttribute("mensaje", "Se eliminó correctamente");
+
+			}
+			return "category/listRentalTickets";
+
+		} catch (Exception e) {
+			model.addAttribute("rentalTicket", new RentalTicket());
+
+			System.out.println(e.getMessage());
+			model.addAttribute("mensaje", "No se puede eliminar una categoría relacionada");
+			model.addAttribute("rentalTicketss", rtS.list());
+
+			return "category/listRentalTickets";
+		}
+
+	}
+
+	
+	
     
 }
