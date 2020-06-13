@@ -160,6 +160,31 @@
 					<a th:href="@{/typeEmployees/new/}"
 						class="btn btn-secondary btn-xs">Nuevo</a>
 
+					<form th:action="@{/typeEmployees/search}" method="post"
+						th:object="${typeEmployee}">
+
+						<div class="form-group">
+							<table>
+
+								<tbody>
+									<tr>
+										<td><label for="nameTypeEmployee"
+											class="col-sm-2 col-form-label">Buscar:</label></td>
+										<td><input type="text" class="form-control"
+											th:field="*{nameTypeEmployee}" id="nameTypeEmployee"
+											placeholder="Nombre tipo de empleado" required="required"
+											pattern=[A-Za-z]+></input></td>
+										<td><button type="submit" class="btn btn-danger">
+												<i class="iconf fa fa-search" style="color: white;"></i>
+											</button></td>
+										<td><a href="/typeEmployees/list" class="btn btn-danger">Limpiar</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+					</form>
+
 					<hr class="sidebar-divider">
 
 					<table class="table table-striped">
@@ -174,7 +199,8 @@
 							<tr th:each="cate: ${listTypeEmployee}">
 								<td th:text="${cate.idTypeEmployee}"></td>
 								<td th:text="${cate.nameTypeEmployee}"></td>
-								<td><a th:href="@{'/typeEmployees/irupdate/'+${cate.idTypeEmployee}}">
+								<td><a
+									th:href="@{'/typeEmployees/irupdate/'+${cate.idTypeEmployee}}">
 										<i class="iconf fa fa-pen" style="color: orange;"></i>
 								</a></td>
 							</tr>

@@ -156,7 +156,7 @@
 					<form th:action="@{/employees/save}" th:object="${employee}"
 						method="post">
 						
-						<div class="form-group row">
+						<div class="form-group row" style="display: none">
 							<label for="name" class="col-sm-2 col-form-label">ID</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{idEmployee}"

@@ -40,18 +40,27 @@ public class EmployeeController {
 			model.addAttribute("listTypeEmployees", teS.list());
 			return "employee/employee";
 		} else {
-			int rpta = eS.insert(employee);
-			if (rpta > 0) {
-				model.addAttribute("mensaje", "Ya existe el empleado");
-				return "employee/employee";
-			} else {
-				eS.insert(employee);
-				model.addAttribute("mensaje", "Se guardo correctamente");
-				model.addAttribute("listEmployees", eS.list());
+			if (employee.getIdEmployee()>0) {
+				eS.update(employee);
+				model.addAttribute("listEmployee", eS.list());
+				model.addAttribute("mensaje", "Se actualizo correctamente");
 				return "redirect:/employees/list";
+			} else {
+				int rpta = eS.insert(employee);
+				if (rpta > 0) {
+					model.addAttribute("mensaje", "Ya existe el empleado");
+					model.addAttribute("listTypeEmployees", teS.list());
+					return "employee/employee";
+				} else {
+					eS.insert(employee);
+					model.addAttribute("mensaje", "Se guardo correctamente");
+					model.addAttribute("listEmployee", eS.list());
+					return "redirect:/employees/list";
+				}
 			}
+			
 		}
-
+		//REGLA DE NEGOCIO
 	}
 
 	@GetMapping("/list")
@@ -91,7 +100,7 @@ public class EmployeeController {
 			model.addAttribute("listTypeEmployees", teS.list());
 			// trae los datos
 			model.addAttribute("employee", objEmp.get());
-			return "employee/employee";
+			return "employee/employeeUpdate";
 		}
 	}
 

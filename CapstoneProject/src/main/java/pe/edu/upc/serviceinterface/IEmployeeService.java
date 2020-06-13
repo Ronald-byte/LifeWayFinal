@@ -9,6 +9,8 @@ public interface IEmployeeService {
 	
 	public int insert(Employee employee);
 	
+	public void update(Employee employee) ;
+	
 	List<Employee> list();
 	
 	public void delete(int idEmployee);

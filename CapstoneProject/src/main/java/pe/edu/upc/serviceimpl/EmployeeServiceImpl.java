@@ -28,7 +28,7 @@ public class EmployeeServiceImpl implements IEmployeeService{
 		}
 		return rpta;
 	}
-
+	
 	@Override
 	public List<Employee> list() {
 		// TODO Auto-generated method stub
@@ -47,6 +47,15 @@ public class EmployeeServiceImpl implements IEmployeeService{
 		// TODO Auto-generated method stub
 		return eR.findById(idEmployee);
 	}
+
+	@Transactional
+	@Override
+	public void update(Employee employee) {
+		// TODO Auto-generated method stub
+		eR.save(employee);
+	}
+
+
 	
 
 	

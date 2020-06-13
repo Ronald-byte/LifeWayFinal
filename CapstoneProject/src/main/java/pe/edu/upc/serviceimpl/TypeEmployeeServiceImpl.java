@@ -43,5 +43,11 @@ public class TypeEmployeeServiceImpl implements ITypeEmployeeService {
 		return teR.findById(idTypeEmployee);
 	}
 
+	@Override
+	public List<TypeEmployee> findByNameTypeEmployeeFull(String nameTypeEmployee) {
+		// TODO Auto-generated method stub
+		return teR.findBynameTypeEmployee(nameTypeEmployee);
+	}
+
 
 }

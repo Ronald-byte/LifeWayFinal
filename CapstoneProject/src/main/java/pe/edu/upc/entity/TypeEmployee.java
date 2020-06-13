@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "TypeEmployees")
@@ -21,7 +20,7 @@ public class TypeEmployee implements Serializable {
 	private int idTypeEmployee;
 
 	
-	@Pattern(regexp = "[A-Z][a-z]*",message = "Ingrese el tipo de empleado nuevamente")
+	//@Pattern(regexp = "[A-Z][a-z]*",message = "Ingrese el tipo de empleado nuevamente")
 	@Column(name = "nameTypeEmployee", nullable = false, length = 30)
 	private String nameTypeEmployee;
 

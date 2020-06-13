@@ -11,4 +11,6 @@ public interface ITypeEmployeeService {
 	List<TypeEmployee> list();
 	
 	Optional<TypeEmployee> searchId(int idTypeEmployee);
+	
+	List<TypeEmployee> findByNameTypeEmployeeFull(String nameTypeEmployee);
 }
