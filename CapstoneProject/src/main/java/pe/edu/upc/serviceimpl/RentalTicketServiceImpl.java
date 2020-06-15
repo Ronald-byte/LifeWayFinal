@@ -1,6 +1,7 @@
 package pe.edu.upc.serviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -38,6 +39,24 @@ public class RentalTicketServiceImpl implements IRentalTicketService{
 		rTR.deleteById(idRentalTicket);
 	}
 
+	@Override
+	public List<RentalTicket> search(int busqueda) {
+		// TODO Auto-generated method stub
+		return rTR.search(busqueda);
+	}
 	
+	@Override
+	public Optional<RentalTicket> searchId(int idRentalTicket) {
+		// TODO Auto-generated method stub
+		return rTR.findById(idRentalTicket);
+	}
+
+	
+	@Transactional
+	@Override
+	public void update(RentalTicket rentalTicket) {
+		// TODO Auto-generated method stub
+		rTR.save(rentalTicket);
+	}
 	
 }

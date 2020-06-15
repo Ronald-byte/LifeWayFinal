@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -23,13 +25,16 @@ public class RentalTicket implements Serializable {
  @GeneratedValue(strategy = GenerationType.IDENTITY)
  private int idRentalTicket;
  
+ @NotNull(message ="Ingrese una fecha válida")
  @Column(name = "rentalDateRentalTicket")
  @DateTimeFormat(pattern = "yyyy-MM-dd")
  private Date rentalDateRentalTicket;
  
+ @Min(value = 1, message = "Debe registrar como mínimo una hora")
  @Column(name = "numberHoursRentalTicket", nullable = false)
  private int numberHoursRentalTicket;
  
+
  @Column(name = "costRateRentalTicket", nullable = false)
  private int costRateRentalTicket = 5; 
  

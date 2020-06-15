@@ -170,6 +170,8 @@
 								<th scope="col">Bicicleta Asignada</th>
 								<th scope="col">Trabajador asignado</th>
 								<th scope="col">Operación</th>
+								<th scope="col">Operación</th>
+								
 							</tr>
 						</thead>
 						<tbody>
@@ -183,9 +185,17 @@
 								<td th:text="${r.bike.idBike}"></td>								
 								<td th:text="${r.employee.nameEmployee}"></td>
 								<td><a
+									th:href="@{'/rentalTickets/irupdate/'+${r.idRentalTicket}}"> <i
+										class="iconf fa fa-pen" style="color: green"></i>
+								</a></td>
+								<td><a
 									th:href="@{'/rentalTickets/delete/'+${r.idRentalTicket}}"> <i
 										class="iconf fa fa-trash" style="color: red"></i>
 								</a></td>
+
+								
+								
+								
 							</tr>
 						</tbody>
 					</table>

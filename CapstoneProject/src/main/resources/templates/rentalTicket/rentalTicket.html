@@ -148,14 +148,10 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Bicicleta</h1>
+					<h1 class="h3 mb-4 text-gray-800">Registrar Boleta de Alquiler</h1>
 
 					<hr class="sidebar-divider">
-					<div th:object="${rentalTicket}" th:remove="tag">
-						<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
-							role="alert">
-							<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
-						</ul>
+					<div th:object="${rentalTicket}" th:remove="tag">					
 					</div>
 
 					<form th:action="@{/rentalTickets/save}" th:object="${rentalTicket}" method="post">

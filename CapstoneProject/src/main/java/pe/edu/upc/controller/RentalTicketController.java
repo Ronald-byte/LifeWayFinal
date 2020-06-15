@@ -1,5 +1,9 @@
 package pe.edu.upc.controller;
 
+import java.text.ParseException;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pe.edu.upc.entity.RentalTicket;
 import pe.edu.upc.serviceinterface.IBikeService;
@@ -42,12 +47,21 @@ public class RentalTicketController {
 	public String saveRentalTicket(@Validated RentalTicket rentalTicket, BindingResult result, Model model) throws Exception{
 		if(result.hasErrors()) {
 			model.addAttribute("listCustomers", cS.list());
+			model.addAttribute("listBikes", bS.list());
+			model.addAttribute("listEmployees", eS.list());
 			return "rentalTicket/rentalTicket";
 		}else {
+			if (rentalTicket.getIdRentalTicket()>0){				
+				rtS.update(rentalTicket);
+				model.addAttribute("listRentalTicket", eS.list());
+				model.addAttribute("mensaje", "Se actualizo correctamente");
+				return "redirect:/rentalTickets/list";
+			} else {			
 			rtS.insert(rentalTicket);
-			model.addAttribute("listRentalTicket", rtS.list());
 			model.addAttribute("mensaje","Se registró ticket de alquiler correctamente");
+			model.addAttribute("listRentalTicket", rtS.list());
 			return "rentalTicket/listRentalTicket";
+			}
 		}
 		
 	}
@@ -71,25 +85,48 @@ public class RentalTicketController {
 		try {
 			if (id > 0) {
 				rtS.delete(id);
-				model.addAttribute("listRentalTickets", rtS.list());
-				model.addAttribute("rentalTicket", new RentalTicket());
-				model.addAttribute("mensaje", "Se eliminó correctamente");
-
 			}
-			return "category/listRentalTickets";
-
+				model.addAttribute("listRentalTicket", rtS.list());
+				model.addAttribute("mensaje", "Se eliminó correctamente");
 		} catch (Exception e) {
 			model.addAttribute("rentalTicket", new RentalTicket());
-
 			System.out.println(e.getMessage());
-			model.addAttribute("mensaje", "No se puede eliminar una categoría relacionada");
 			model.addAttribute("rentalTicketss", rtS.list());
-
-			return "category/listRentalTickets";
 		}
+		return "rentalTicket/listRentalTicket";
 
 	}
 
+	
+	@RequestMapping("/search")
+	public String searchProducts(Model model, @Validated RentalTicket rentalTicket) throws ParseException {
+		List<RentalTicket> listRentalTickets;
+		model.addAttribute("rentalTicket", new RentalTicket());
+		listRentalTickets = rtS.search(rentalTicket.getIdRentalTicket());
+		if (listRentalTickets.isEmpty()) {
+
+			model.addAttribute("mensaje", "No se encontró");
+		}
+		model.addAttribute("listProducts", listRentalTickets);
+		return "rentalTicket/listRentalTicket";
+
+	}
+	
+	@RequestMapping("/irupdate/{id}")
+	public String irUpdate(@PathVariable int id, Model model, RedirectAttributes objRedir) {
+		Optional<RentalTicket> objAr = rtS.searchId(id);
+		if (objAr == null) {
+			objRedir.addFlashAttribute("mensaje", "Ocurrió un error");
+			return "redirect:/rentalTickets/list";
+		} else {
+			model.addAttribute("listCustomers", cS.list());
+			model.addAttribute("listBikes", bS.list());
+			model.addAttribute("listEmployees", eS.list());
+			model.addAttribute("rentalTicket", objAr.get());
+			return "rentalTicket/rentalTicketUpdate";	
+		}
+	}
+	
 	
 	
     
