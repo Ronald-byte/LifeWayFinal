@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>LifeWay</title>
+<title>2020</title>
 
 <!-- Custom fonts for this template-->
 <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -36,7 +36,7 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				th:href="@{/bikes/list}"> <img th:src="@{/img/logo.png}"
+				th:href="@{/typeEmployees/list}"> <img th:src="@{/img/logo.png}"
 				width="190" height="60" alt="logo" align="middle"></img>
 			</a>
 
@@ -148,56 +148,103 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Bicicleta</h1>
+					<h1 class="h3 mb-4 text-gray-800">Empleado</h1>
 
 					<hr class="sidebar-divider">
-					<div th:object="${bike}" th:remove="tag">
-						<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
-							role="alert">
-							<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
-						</ul>
-					</div>
+					
 
-					<form th:action="@{/bikes/save}" th:object="${bike}" method="post">
-						<div class="form-group row">
-							<label for="brand" class="col-sm-2 col-form-label">Marca:</label>
+					<form th:action="@{/employees/save}" th:object="${employee}"
+						method="post">
+						
+						<div class="form-group row" style="display: none">
+							<label for="name" class="col-sm-2 col-form-label">ID</label>
 							<div class="col-sm-6">
-								<select class="form-control" th:field="*{brand.idBrand}">
-									<option th:each="b: ${listBrands}" th:value="${b.idBrand}"
-										th:text="${b.nameBrand}"
-										th:selected="(${b.idBrand} == *{brand.idBrand})"></option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="cost" class="col-sm-2 col-form-label">Costo:</label>
-							<div class="col-sm-6">
-								<input type="number" step="any" min="0" th:field="*{costBike}" class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('costBike')}"
-									th:errors="*{costBike}"></small>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="date" class="col-sm-2 col-form-label">Fecha
-								de Compra:</label>
-							<div class="col-sm-6">
-								<input type="date" th:field="*{purchaseDateBike}"
+								<input type="text" th:field="*{idEmployee}"
 									class="form-control"
 									th:errorclass="'form-control alert-danger'" /> <small
 									class="form-text text-danger"
-									th:if="${#fields.hasErrors('purchaseDateBike')}"
-									th:errors="*{purchaseDateBike}"></small>
+									th:if="${#fields.hasErrors('idEmployee')}"
+									th:errors="*{idEmployee}"></small>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="status" class="col-sm-2 col-form-label">Estado:</label>
+							<label for="name" class="col-sm-2 col-form-label">Nombre</label>
 							<div class="col-sm-6">
-								<select class="form-control" th:field="*{status.idStatus}">
-									<option th:each="s: ${listStatus}" th:value="${s.idStatus}"
-										th:text="${s.nameStatus}"
-										th:selected="(${s.idStatus} == *{status.idStatus})"></option>
+								<input type="text" th:field="*{nameEmployee}"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('nameEmployee')}"
+									th:errors="*{nameEmployee}"></small>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="paternalSurnameEmployee"
+								class="col-sm-2 col-form-label">Apellido Paterno</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{paternalSurnameEmployee}"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('paternalSurnameEmployee')}"
+									th:errors="*{paternalSurnameEmployee}"></small>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="maternalSurnameEmployee"
+								class="col-sm-2 col-form-label">Apellido Materno</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{maternalSurnameEmployee}"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('maternalSurnameEmployee')}"
+									th:errors="*{maternalSurnameEmployee}"></small>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="email" class="col-sm-2 col-form-label">Correo</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{emailEmployee}"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('emailEmployee')}"
+									th:errors="*{emailEmployee}"></small>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="phoneNumber" class="col-sm-2 col-form-label">Número
+								de teléfono</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{phoneNumberEmployee}"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('phoneNumberEmployee')}"
+									th:errors="*{phoneNumberEmployee}"></small>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="dni" class="col-sm-2 col-form-label">Número
+								de DNI</label>
+							<div class="col-sm-6">
+								<input type="text" th:field="*{dniEmployee}"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'" readonly="readonly"/> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('dniEmployee')}"
+									th:errors="*{dniEmployee}"></small>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="typeEmployee">Tipo de empleado:</label>
+							<div class="col-sm-6">
+								<select class="form-control"
+									th:field="*{typeEmployee.idTypeEmployee}">
+									<option th:each="c: ${listTypeEmployees}"
+										th:value="${c.idTypeEmployee}" th:text="${c.nameTypeEmployee}"
+										th:selected="(${c.idTypeEmployee} == *{typeEmployee.idTypeEmployee})"></option>
 								</select>
 							</div>
 						</div>
@@ -208,7 +255,7 @@
 				<div class="form-group row">
 					<div class="col-sm-6">
 						<input type="submit" value="Guardar" class="btn btn-secondary"></input>
-						<a href="/bikes/list" class="btn btn-danger">Cancelar</a>
+						<a href="/employees/list" class="btn btn-danger">Cancelar</a>
 					</div>
 				</div>
 
@@ -228,7 +275,7 @@
 		<footer class="sticky-footer bg-white">
 			<div class="container my-auto">
 				<div class="copyright text-center my-auto">
-					<span>Copyright &copy; Grupo 1 2020</span>
+					<span>Copyright &copy; Web 2020</span>
 				</div>
 			</div>
 		</footer>
@@ -263,7 +310,7 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" th:href="@{/bikes/index}">Cerrar
+					<a class="btn btn-primary" th:href="@{/typeEmployees/index}">Cerrar
 						Sesión</a>
 				</div>
 			</div>

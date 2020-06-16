@@ -37,11 +37,8 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				th:href="@{/typeEmployees/list}">
-				<div class="sidebar-brand-icon rotate-n-15">
-					<i class="fas fa-leaf"></i>
-				</div>
-				<div class="sidebar-brand-text mx-2">LifeWay</div>
+				th:href="@{/typeEmployees/list}"> <img th:src="@{/img/logo.png}"
+				width="190" height="60" alt="logo" align="middle"></img>
 			</a>
 
 			<!-- Divider -->
@@ -58,13 +55,16 @@
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/brands/list}">Marcas de Bicicleta</a>
+						<a class="collapse-item" th:href="@{/brands/list}">Marcas de
+							Bicicleta</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/status/list}">Estados de Bicicleta</a>
+						<a class="collapse-item" th:href="@{/status/list}">Estados de
+							Bicicleta</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/typeEmployees/list}">Tipos de Empleado</a>
+						<a class="collapse-item" th:href="@{/typeEmployees/list}">Tipos
+							de Empleado</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/customers/list}">Clientes</a>
@@ -76,7 +76,8 @@
 						<a class="collapse-item" th:href="@{/employees/list}">Empleados</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" th:href="@{/rentalTickets/list}">Boleta de Alquiler</a>
+						<a class="collapse-item" th:href="@{/rentalTickets/list}">Boleta
+							de Alquiler</a>
 					</div>
 				</div></li>
 
@@ -156,7 +157,33 @@
 					<!-- Page Heading -->
 					<h1 class="h3 mb-4 text-gray-800">Tipos de Empleado</h1>
 
-					<a th:href="@{/typeEmployees/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
+					<a th:href="@{/typeEmployees/new/}"
+						class="btn btn-secondary btn-xs">Nuevo</a>
+
+					<form th:action="@{/typeEmployees/search}" method="post"
+						th:object="${typeEmployee}">
+
+						<div class="form-group">
+							<table>
+
+								<tbody>
+									<tr>
+										<td><label for="nameTypeEmployee"
+											class="col-sm-2 col-form-label">Buscar:</label></td>
+										<td><input type="text" class="form-control"
+											th:field="*{nameTypeEmployee}" id="nameTypeEmployee"
+											placeholder="Nombre tipo de empleado" required="required"
+											pattern=[A-Za-z]+></input></td>
+										<td><button type="submit" class="btn btn-danger">
+												<i class="iconf fa fa-search" style="color: white;"></i>
+											</button></td>
+										<td><a href="/typeEmployees/list" class="btn btn-danger">Limpiar</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+					</form>
 
 					<hr class="sidebar-divider">
 
@@ -165,12 +192,17 @@
 							<tr>
 								<th scope="col">Id</th>
 								<th scope="col">Nombre</th>
+								<th scope="col"></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="cate: ${listTypeEmployee}">
 								<td th:text="${cate.idTypeEmployee}"></td>
 								<td th:text="${cate.nameTypeEmployee}"></td>
+								<td><a
+									th:href="@{'/typeEmployees/irupdate/'+${cate.idTypeEmployee}}">
+										<i class="iconf fa fa-pen" style="color: orange;"></i>
+								</a></td>
 							</tr>
 						</tbody>
 					</table>

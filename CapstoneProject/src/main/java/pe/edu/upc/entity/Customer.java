@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -18,7 +18,9 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Min(10000000)
+	@Max(99999999)
+	@Column(name = "idCustomer", nullable = false, length = 30)
     private int idCustomer;
 	
 	@Pattern(regexp = "[a-zA-Z]+", message = "El nombre solo puede tener caracteres")
@@ -37,7 +39,7 @@ public class Customer implements Serializable {
     private String emailCustomer;
     
 	@Pattern(regexp = "[0-9]+", message = "El número de telefono solo puede tener valores numericos")
-	@Size(max = 9, message = "El numero de telefono puede tener como maximo 9 caracteres")
+	@Size(min = 9, message = "El numero de telefono debe tener 9 caracteres")
     @Column(name = "phoneNumberCustomer", nullable = false, length = 9)
     private String phoneNumberCustomer;
 

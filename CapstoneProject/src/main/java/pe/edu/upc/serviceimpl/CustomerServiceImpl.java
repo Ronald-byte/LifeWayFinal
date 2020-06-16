@@ -19,8 +19,13 @@ public class CustomerServiceImpl implements ICustomerService {
 	
 	@Transactional
 	@Override
-	public void insert(Customer customer) {
-		cR.save(customer);
+	public int insert(Customer customer) {
+		int rpta = cR.searchCustomer(customer.getNameCustomer());
+		if (rpta == 0)
+		{
+			cR.save(customer);
+		}
+		return rpta;
 		// TODO Auto-generated method stub
 		
 	}
@@ -29,6 +34,12 @@ public class CustomerServiceImpl implements ICustomerService {
 	public List<Customer> list() {
 		// TODO Auto-generated method stub
 		return cR.findAll();
+	}
+
+	@Override
+	public List<Customer> findNameCustumerFull(String nameCustomer) {
+		// TODO Auto-generated method stub
+		return cR.findBynameCustomer(nameCustomer);
 	}
 
 }

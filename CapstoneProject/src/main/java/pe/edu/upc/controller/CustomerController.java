@@ -1,5 +1,8 @@
 package pe.edu.upc.controller;
 
+import java.text.ParseException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,9 +33,18 @@ public class CustomerController {
 		if(result.hasErrors()) {
 			return "customer/customer";
 		}else {
-			cS.insert(customer);
-			model.addAttribute("listCustomer", cS.list());
-			return "customer/listCustomer";
+			int rpta = cS.insert(customer);
+			if (rpta > 0)
+			{
+				model.addAttribute("mensaje", "Este cliente ya existe");
+				return "customer/customer";
+			}else
+			{
+				model.addAttribute("listCustomer", cS.list());
+				model.addAttribute("mensaje", "Se registro correctamente");
+				return "customer/listCustomer";
+			}
+			
 		}
 	}
 	
@@ -45,4 +57,19 @@ public class CustomerController {
 		}
 		return "customer/listCustomer";
 	}
+	
+	@RequestMapping("/search")
+	public String searchCustomers(Model model, @Validated Customer customer) throws ParseException 
+	{
+		List<Customer> listCustomer;
+		model.addAttribute("customer", new Customer());
+		listCustomer = cS.findNameCustumerFull(customer.getNameCustomer());
+		if (listCustomer.isEmpty())
+		{
+			model.addAttribute("mensaje", "No se encontre este cliente");
+		}
+		model.addAttribute("listCustomer", listCustomer);
+		return "customer/listCustomer";
+	}
+	
 }
