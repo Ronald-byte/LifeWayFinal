@@ -33,11 +33,10 @@
 		<ul
 			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
 			id="accordionSidebar">
-
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				th:href="@{/status/list}"> <img th:src="@{/img/logo.png}"
+				th:href="@{/bikes/list}"> <img th:src="@{/img/logo.png}"
 				width="190" height="60" alt="logo" align="middle"></img>
 			</a>
 
@@ -45,11 +44,9 @@
 			<hr class="sidebar-divider my-0">
 
 
-
-
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-target="#collapseTwo" aria-expanded=true
+				data-target="#collapseTwo" aria-expanded="false"
 				aria-controls="collapseTwo"> <i class="fas fa-fw fa-cog"></i> <span>Men&uacute;</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
@@ -86,11 +83,6 @@
 						<a class="collapse-item" th:href="@{/roles/list}">Roles</a>
 					</div>
 				</div></li>
-
-
-
-			<!-- Divider -->
-			<hr class="sidebar-divider">
 
 			<!-- Sidebar Toggler (Sidebar) -->
 
@@ -137,6 +129,7 @@
 								class="mr-2 d-none d-lg-inline text-gray-600 small"><img
 									th:src="@{/img/logout.png}" width="30" height="30" alt="logo"
 									align="middle"></img></span>
+
 						</a> <!-- Dropdown - User Information -->
 							<div
 								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -145,7 +138,7 @@
 									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Perfil
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="status/index" data-toggle="modal"
+								<a class="dropdown-item" href="#" data-toggle="modal"
 									data-target="#logoutModal"> <i
 									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Cerrar sesión
@@ -160,35 +153,20 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
-					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Estados</h1>
+					<div class="container">
 
-					<a th:href="@{/status/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
+						<div class="card bg-danger text-white">
+							<div class="card-header">Acceso Denegado!</div>
+							<div class="card-body">
+								<h5 class="card-title">Los sentimos , NO tienes permisos
+									para acceder a este recurso.</h5>
+								<a th:href="@{/products/list}" class="btn btn-outline-light"
+									role="button">Ir al inicio</a>
 
-					<hr class="sidebar-divider">
+							</div>
+						</div>
+					</div>
 
-					<table class="table table-striped">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">Id</th>
-								<th scope="col">Nombre</th>
-								<th scope="col">Operación</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="cate: ${listStatus}">
-								<td th:text="${cate.idStatus}"></td>
-								<td th:text="${cate.nameStatus}"></td>
-								<td> 
-								<a th:href="@{'/status/irupdate/'+${cate.idStatus}}">
-								<i class="iconf fa fa-pen" style="color:green"></i>
-								</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-
-					<p th:text="${mensaje}" class="form-text text-success"></p>
 
 				</div>
 				<!-- /.container-fluid -->
@@ -200,7 +178,7 @@
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Grupo 1 2020</span>
+						<span>Copyright &copy; Web 2020</span>
 					</div>
 				</div>
 			</footer>
@@ -238,7 +216,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 					onclick="document.getElementById('logoutForm').submit();"
 					type="submit">Cerrar</button>
 				<button class="btn btn-dark" type="button" data-dismiss="modal"
-					th:href="@{/status/list}">Cancel</button>
+					th:href="@{/error}">Cancel</button>
 			</form>
 		</div>
 	</div>
