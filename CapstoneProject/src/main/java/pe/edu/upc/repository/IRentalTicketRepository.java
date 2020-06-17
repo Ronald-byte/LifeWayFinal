@@ -13,7 +13,7 @@ import pe.edu.upc.entity.RentalTicket;
 public interface IRentalTicketRepository extends JpaRepository<RentalTicket, Integer>{
 
 	
-	@Query("from RentalTicket r where r.idRentalTicket like %:busqueda%")
-	List<RentalTicket> search(@Param("busqueda") int busqueda);
+	@Query("from RentalTicket r where r.customer.nameCustomer like %:busqueda%")
+	List<RentalTicket> search(@Param("busqueda") String busqueda);
 	
 }

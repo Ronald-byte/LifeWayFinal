@@ -40,7 +40,7 @@ public class RentalTicketServiceImpl implements IRentalTicketService{
 	}
 
 	@Override
-	public List<RentalTicket> search(int busqueda) {
+	public List<RentalTicket> search(String busqueda) {
 		// TODO Auto-generated method stub
 		return rTR.search(busqueda);
 	}

@@ -14,7 +14,7 @@ public interface IRentalTicketService {
 	
 	public void update(RentalTicket rentalTicket);
 	
-	public List<RentalTicket> search(int busqueda);
+	public List<RentalTicket> search(String busqueda);
 	
 
 	Optional<RentalTicket> searchId(int idRentalTicket);

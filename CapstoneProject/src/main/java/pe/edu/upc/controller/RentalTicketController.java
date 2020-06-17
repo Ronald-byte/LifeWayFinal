@@ -55,18 +55,21 @@ public class RentalTicketController {
 		}else {
 			if (rentalTicket.getIdRentalTicket()>0){				
 				rtS.update(rentalTicket);
-				model.addAttribute("listRentalTicket", eS.list());
+				model.addAttribute("listRentalTicket", rtS.list());
 				model.addAttribute("mensaje", "Se actualizo correctamente");
 				return "redirect:/rentalTickets/list";
 			} else {			
 			rtS.insert(rentalTicket);
 			model.addAttribute("mensaje","Se registró ticket de alquiler correctamente");
 			model.addAttribute("listRentalTicket", rtS.list());
-			return "rentalTicket/listRentalTicket";
+			return "redirect:/rentalTickets/list";
 			}
 		}
 		
 	}
+	
+	
+	
 	
 	@GetMapping("/list")
 	public String listRentalTicket(Model model) {
@@ -104,12 +107,12 @@ public class RentalTicketController {
 	public String searchProducts(Model model, @Validated RentalTicket rentalTicket) throws ParseException {
 		List<RentalTicket> listRentalTickets;
 		model.addAttribute("rentalTicket", new RentalTicket());
-		listRentalTickets = rtS.search(rentalTicket.getIdRentalTicket());
+		listRentalTickets = rtS.search(rentalTicket.getCustomer().getNameCustomer());
 		if (listRentalTickets.isEmpty()) {
 
 			model.addAttribute("mensaje", "No se encontró");
 		}
-		model.addAttribute("listProducts", listRentalTickets);
+		model.addAttribute("listRentalTickets", listRentalTickets);
 		return "rentalTicket/listRentalTicket";
 
 	}
