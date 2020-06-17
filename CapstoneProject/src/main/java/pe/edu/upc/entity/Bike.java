@@ -11,6 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Positive;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,11 +33,15 @@ public class Bike implements Serializable {
 	@JoinColumn(name = "idBrand")
 	private Brand brand;
 
+	@Positive(message = "El monto debe de ser positivo")
 	@Column(name = "costBike", nullable = false)
 	private float costBike;
 
+	@NotNull(message = "La fecha es obligatoria")
+	@Past(message = "La fecha debe estar en el pasado")
 	@Column(name = "purchaseDateBike", nullable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date purchaseDateBike;
 	
 	@ManyToOne
@@ -51,7 +60,6 @@ public class Bike implements Serializable {
 	
 	public Bike() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getIdBike() {

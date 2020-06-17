@@ -1,6 +1,7 @@
 package pe.edu.upc.serviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -14,24 +15,29 @@ import pe.edu.upc.serviceinterface.IBikeService;
 @Service
 public class BikeServiceImpl implements IBikeService {
 
-	
-	
 	@Autowired
 	private IBikeRepository bR;
 
 	@Override
 	public List<Bike> list() {
-		// TODO Auto-generated method stub
 		return bR.findAll();
 	}
-	
+
 	@Transactional
 	@Override
 	public void insert(Bike bike) {
-		// TODO Auto-generated method stub
-		bR.save(bike);	
+		bR.save(bike);
 	}
 
+	@Transactional
+	@Override
+	public Optional<Bike> searchId(int idBike) {
+		return bR.findById(idBike);
+	}
 
-	
+	@Transactional
+	@Override
+	public void update(Bike bike) {
+		bR.save(bike);
+	}
 }
