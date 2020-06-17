@@ -34,17 +34,17 @@ public class RentalTicket implements Serializable {
  @Column(name = "numberHoursRentalTicket", nullable = false)
  private int numberHoursRentalTicket;
  
-
- @Column(name = "costRateRentalTicket", nullable = false)
+ @Column(name = "costRateRentalTicket")
  private int costRateRentalTicket = 5; 
  
  @ManyToOne
  @JoinColumn(name = "idCustomer")
  private Customer customer;
 
- @Column(name = "totalCostRentalTicket", nullable = false)
- private int totalCostRentalTicket;
-
+ public int totalCostRentalTicket() {
+	 return numberHoursRentalTicket * costRateRentalTicket;
+ }
+ 
  @ManyToOne
  @JoinColumn(name = "idBike")
  private Bike bike;
@@ -58,15 +58,15 @@ public RentalTicket() {
 	// TODO Auto-generated constructor stub
 }
 
-public RentalTicket(int idRentalTicket, Date rentalDateRentalTicket, int numberHoursRentalTicket,
-		int costRateRentalTicket, Customer customer, int totalCostRentalTicket, Bike bike, Employee employee) {
+public RentalTicket(int idRentalTicket, @NotNull(message = "Ingrese una fecha válida") Date rentalDateRentalTicket,
+		@Min(value = 1, message = "Debe registrar como mínimo una hora") int numberHoursRentalTicket,
+		int costRateRentalTicket, Customer customer, Bike bike, Employee employee) {
 	super();
 	this.idRentalTicket = idRentalTicket;
 	this.rentalDateRentalTicket = rentalDateRentalTicket;
 	this.numberHoursRentalTicket = numberHoursRentalTicket;
 	this.costRateRentalTicket = costRateRentalTicket;
 	this.customer = customer;
-	this.totalCostRentalTicket = totalCostRentalTicket;
 	this.bike = bike;
 	this.employee = employee;
 }
@@ -111,14 +111,6 @@ public void setCustomer(Customer customer) {
 	this.customer = customer;
 }
 
-public int getTotalCostRentalTicket() {
-	return totalCostRentalTicket;
-}
-
-public void setTotalCostRentalTicket(int totalCostRentalTicket) {
-	this.totalCostRentalTicket = totalCostRentalTicket;
-}
-
 public Bike getBike() {
 	return bike;
 }
@@ -134,6 +126,5 @@ public Employee getEmployee() {
 public void setEmployee(Employee employee) {
 	this.employee = employee;
 }
-
 
 }

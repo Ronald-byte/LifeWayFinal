@@ -187,7 +187,7 @@
 							<label for="cost" class="col-sm-2 col-form-label">Tarifa de Venta:</label>
 							<div class="col-sm-6">
 								<input type="number" th:field="*{costRateRentalTicket}" class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
+									th:errorclass="'form-control alert-danger'" readonly="readonly"/> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('costRateRentalTicket')}"
 									th:errors="*{costRateRentalTicket}"></small>
@@ -203,16 +203,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="form-group row">
-							<label for="totalcost" class="col-sm-2 col-form-label">Costo total de Venta:</label>
-							<div class="col-sm-6">
-								<input type="number" th:field="*{totalCostRentalTicket}" class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('totalCostRentalTicket')}"
-									th:errors="*{totalCostRentalTicket}"></small>
-							</div>
-						</div>
+						
 						<div class="form-group row">
 							<label for="bike" class="col-sm-2 col-form-label">Bicicleta:</label>
 							<div class="col-sm-6">
