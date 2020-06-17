@@ -59,7 +59,7 @@ public class BikeController {
 				bS.insert(bike);
 				model.addAttribute("mensaje", "Se guardó correctamente");
 				model.addAttribute("listBike", bS.list());
-				return "bike/listBike";
+				return "redirect:/bike/listBike";
 			 }
 		}
 		
