@@ -9,5 +9,4 @@ public interface IBikeService {
 	public void insert(Bike bike);
 	List<Bike> list();
 	Optional<Bike>searchId(int idBike);
-	public void update(Bike bike);
 }

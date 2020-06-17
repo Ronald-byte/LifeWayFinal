@@ -34,10 +34,4 @@ public class BikeServiceImpl implements IBikeService {
 	public Optional<Bike> searchId(int idBike) {
 		return bR.findById(idBike);
 	}
-
-	@Transactional
-	@Override
-	public void update(Bike bike) {
-		bR.save(bike);
-	}
 }

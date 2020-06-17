@@ -50,19 +50,11 @@ public class BikeController {
 			model.addAttribute("listBike", bS.list());
 			return "bike/bike";
 		}else {
-			if(bike.getIdBike()>0){
-				bS.update(bike);
-				model.addAttribute("listBike", bS.list());
-				model.addAttribute("mensaje", "Se actualizo correctamente");
-				return "redirect:/bikes/list";
- 			} else {
 				bS.insert(bike);
 				model.addAttribute("mensaje", "Se guardó correctamente");
 				model.addAttribute("listBike", bS.list());
-				return "redirect:/bike/listBike";
-			 }
-		}
-		
+				return "redirect:/bikes/list"; 
+		}	
 	}
 	
 	@GetMapping("/list")
@@ -71,7 +63,7 @@ public class BikeController {
 			model.addAttribute("listBike", bS.list());
 		}catch(Exception e) {
 			model.addAttribute("error", e.getMessage());
-		}
+		}	
 		return "bike/listBike";
 		
 		
@@ -86,8 +78,8 @@ public class BikeController {
 		} else {
 			model.addAttribute("listBrands", brS.list());
 			model.addAttribute("listStatus", sS.list());
-			model.addAttribute("listBikes", bS.list());
-			return "bike/bikeUpdate";	
+			model.addAttribute("bike", objBi.get());
+			return "bike/bike";	
 		}
 	}
 	

@@ -37,6 +37,7 @@ public class BrandController {
 			return "brand/brand";
 		}else {
 			bS.insert(brand);
+			model.addAttribute("mensaje", "Se guardó correctamente");
 			model.addAttribute("listBrand", bS.list());
 			return "brand/listBrand";
 		}

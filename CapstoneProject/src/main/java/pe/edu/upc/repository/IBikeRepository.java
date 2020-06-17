@@ -7,7 +7,5 @@ import pe.edu.upc.entity.Bike;
 
 @Repository
 public interface IBikeRepository extends JpaRepository<Bike, Integer> {
-
-  
 	
 }
