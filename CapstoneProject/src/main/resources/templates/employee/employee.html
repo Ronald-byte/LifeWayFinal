@@ -177,7 +177,7 @@
 							<div class="col-sm-6">
 								<input type="text" th:field="*{nameEmployee}"
 									class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
+									th:errorclass="'form-control alert-danger'" pattern="[A-Z][a-z]*" title="Ingrese el nombre del empleado nuevamente"/> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('nameEmployee')}"
 									th:errors="*{nameEmployee}"></small>

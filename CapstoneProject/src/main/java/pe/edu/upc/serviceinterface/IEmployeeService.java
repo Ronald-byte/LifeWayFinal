@@ -16,4 +16,6 @@ public interface IEmployeeService {
 	public void delete(int idEmployee);
 
 	Optional<Employee> searchId(int idEmployee);
+	
+	public List<Employee> search(String busqueda);
 }

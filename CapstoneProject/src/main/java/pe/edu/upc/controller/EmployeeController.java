@@ -2,6 +2,8 @@ package pe.edu.upc.controller;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.text.ParseException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,6 +111,7 @@ public class EmployeeController {
 	public String listEmployees(Model model) {
 		try {
 			model.addAttribute("listEmployee", eS.list());
+			model.addAttribute("employee", new Employee());
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
@@ -174,6 +177,20 @@ public class EmployeeController {
 		model.addAttribute("employee", employee.get());
 
 		return "employee/view";
+	}
+	
+	@RequestMapping("/search")
+	public String searchEmployees(Model model, @Validated Employee employee) throws ParseException {
+		List<Employee> listEmployees;
+		listEmployees = eS.search(employee.getNameEmployee());
+		model.addAttribute("employee", new Employee());
+		if (listEmployees.isEmpty()) {
+
+			model.addAttribute("mensaje", "No se encontró");
+		}
+		model.addAttribute("listEmployee", listEmployees);
+		return "employee/listEmployee";
+
 	}
 
 }

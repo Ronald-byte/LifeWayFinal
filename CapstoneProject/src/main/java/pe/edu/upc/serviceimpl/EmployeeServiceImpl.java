@@ -55,6 +55,12 @@ public class EmployeeServiceImpl implements IEmployeeService{
 		eR.save(employee);
 	}
 
+	@Override
+	public List<Employee> search(String busqueda) {
+		// TODO Auto-generated method stub
+		return eR.search(busqueda);
+	}
+
 
 	
 
