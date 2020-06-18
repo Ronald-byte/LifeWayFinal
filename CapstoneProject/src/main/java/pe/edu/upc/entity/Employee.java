@@ -51,6 +51,18 @@ public class Employee implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "idTypeEmployee")
 	private TypeEmployee typeEmployee;
+	
+	private String photoEmployee;
+	
+	public String getPhotoEmployee()
+	{
+		return photoEmployee;
+	}
+	
+	public void setPhotoEmployee(String photoEmployee)
+	{
+		this.photoEmployee=photoEmployee;
+	}
 
 	public Employee() {
 		super();
@@ -58,7 +70,7 @@ public class Employee implements Serializable{
 	}
 
 	public Employee(int idEmployee, String nameEmployee, String paternalSurnameEmployee, String maternalSurnameEmployee,
-			String emailEmployee, String phoneNumberEmployee,String dniEmployee, TypeEmployee typeEmployee) {
+			String emailEmployee, String phoneNumberEmployee,String dniEmployee, TypeEmployee typeEmployee, String photoEmployee) {
 		super();
 		this.idEmployee = idEmployee;
 		this.nameEmployee = nameEmployee;
@@ -68,6 +80,7 @@ public class Employee implements Serializable{
 		this.phoneNumberEmployee = phoneNumberEmployee;
 		this.dniEmployee=dniEmployee;
 		this.typeEmployee = typeEmployee;
+		this.photoEmployee=photoEmployee;
 	}
 
 	public int getIdEmployee() {

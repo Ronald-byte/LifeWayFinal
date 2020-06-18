@@ -184,7 +184,9 @@
 						</thead>
 						<tbody>
 							<tr th:each="p: ${listEmployee}">
-								<td th:text="${p.idEmployee}"></td>
+								<td><a class="btn btn-danger btn-xs"
+									th:href="@{/employees/view/} + ${p.idEmployee}"
+									th:text="${p.idEmployee}"></a></td>
 								<td th:text="${p.nameEmployee}"></td>
 								<td th:text="${p.paternalSurnameEmployee}"></td>
 								<td th:text="${p.maternalSurnameEmployee}"></td>
