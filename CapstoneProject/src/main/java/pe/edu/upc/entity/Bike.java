@@ -34,8 +34,8 @@ public class Bike implements Serializable {
 	private Brand brand;
 
 	@Positive(message = "El monto debe de ser positivo")
-	@Column(name = "costBike", nullable = false)
-	private float costBike;
+	@Column(name = "costBike", nullable = false, columnDefinition = "Decimal(8,2)")
+	private Double costBike;
 
 	@NotNull(message = "La fecha es obligatoria")
 	@Past(message = "La fecha debe estar en el pasado")
@@ -47,14 +47,18 @@ public class Bike implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idStatus")
 	private Status status;
+
+	private String photoBike;
+
 	
-	public Bike(int idBike, Brand brand, float costBike, Date purchaseDateBike, Status status) {
+	public Bike(int idBike, Brand brand, Double costBike, Date purchaseDateBike, Status status, String photoBike) {
 		super();
 		this.idBike = idBike;
 		this.brand = brand;
 		this.costBike = costBike;
 		this.purchaseDateBike = purchaseDateBike;
 		this.status = status;
+		this.photoBike = photoBike;
 	}
 
 	
@@ -78,11 +82,11 @@ public class Bike implements Serializable {
 		this.brand = brand;
 	}
 
-	public float getCostBike() {
+	public Double getCostBike() {
 		return costBike;
 	}
 
-	public void setCostBike(float costBike) {
+	public void setCostBike(Double costBike) {
 		this.costBike = costBike;
 	}
 	
@@ -100,6 +104,14 @@ public class Bike implements Serializable {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public String getPhotoBike() {
+		return photoBike;
+	}
+
+	public void setPhotoBike(String photoBike) {
+		this.photoBike = photoBike;
 	}
 	
 	

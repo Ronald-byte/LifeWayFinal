@@ -178,7 +178,9 @@
 						</thead>
 						<tbody>
 							<tr th:each="b: ${listBike}">
-								<td th:text="${b.idBike}"></td>
+								<td><a class="btn btn-secondary btn-xs"
+									th:href="@{/bikes/view/} + ${b.idBike}"
+								    th:text="${b.idBike}"></a></td>
 								<td th:text="${b.brand.nameBrand}"></td>
 								<td th:text="${b.costBike}"></td>
 								<td th:text="${#dates.format(b.purchaseDateBike,'dd/MM/yyyy')}"></td>

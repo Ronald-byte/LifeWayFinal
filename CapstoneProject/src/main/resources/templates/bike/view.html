@@ -151,86 +151,56 @@
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
-				<div class="container-fluid">
+				<div class="container">
+					<div class="card">
+						<div class="card-header text-white bg-dark mb-3">Detalle de
+							Bicicleta</div>
+						<div class="card-body">
 
-					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Bicicleta</h1>
+							<div class="table-responsive">
+								<table class="table table-white">
 
-					<hr class="sidebar-divider">
-					<div th:object="${bike}" th:remove="tag">
-						<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
-							role="alert">
-							<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
-						</ul>
-					</div>
+									<tbody>
+										<tr>
+											<td>Id</td>
+											<td th:text="${bike.idBike}"></td>
+										</tr>
+										<tr>
+											<td>Marca</td>
+											<td th:text="${bike.brand.nameBrand}"></td>
+										</tr>
+										<tr>
+											<td>Costo</td>
+											<td th:text="${bike.costBike}"></td>
+										</tr>
+										<tr>
+											<td>Fecha de Compra</td>
+											<td th:text="${#dates.format(bike.purchaseDateBike,'dd/MM/yyyy')}"></td>
+										</tr>
+										<tr>
+											<td>Estado</td>
+											<td th:text="${bike.status.nameStatus}"></td>
+										</tr>
+										<tr>
+											<td>Foto</td>
+											<td><img th:if="${#strings.length(bike.photoBike)> 0}"
+												class="img-thumbnail rounded float-left"
+												style="max-width: 50%;"
+												th:src="@{'/bikes/uploads/' + ${bike.photoBike}}"
+												th:alt="${bike.photoBike}" /></td>
+										</tr>
+									</tbody>
 
-					<form th:action="@{/bikes/save}" th:object="${bike}" method="post">
-						<div class="form-group row">
-							<label for="brand" class="col-sm-2 col-form-label">Marca:</label>
-							<div class="col-sm-6">
-								<select class="form-control" th:field="*{brand.idBrand}">
-									<option th:each="b: ${listBrands}" th:value="${b.idBrand}"
-										th:text="${b.nameBrand}"
-										th:selected="(${b.idBrand} == *{brand.idBrand})"></option>
-								</select>
+								</table>
+
+								<a th:href="@{/bikes/list}" type="button"
+									class="btn btn-danger k"> <span
+									class="glyphicon glyphicon-circle-arrow-left"></span> Volver
+								</a>
 							</div>
 						</div>
-						<div class="form-group row">
-							<label for="cost" class="col-sm-2 col-form-label">Costo:</label>
-							<div class="col-sm-6">
-								<input type="number" step="0.01" min="0" th:field="*{costBike}" class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('costBike')}"
-									th:errors="*{costBike}"></small>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="date" class="col-sm-2 col-form-label">Fecha
-								de Compra:</label>
-							<div class="col-sm-6">
-								<input type="date" th:field="*{purchaseDateBike}"
-									class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('purchaseDateBike')}"
-									th:errors="*{purchaseDateBike}"></small>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="status" class="col-sm-2 col-form-label">Estado:</label>
-							<div class="col-sm-6">
-								<select class="form-control" th:field="*{status.idStatus}">
-									<option th:each="s: ${listStatus}" th:value="${s.idStatus}"
-										th:text="${s.nameStatus}"
-										th:selected="(${s.idStatus} == *{status.idStatus})"></option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="file" class="col-sm-2 col-form-label ">Foto:</label>
-							<div class="col-sm-6">
-								<input type="file" name="file" class="form-control"
-									th:text="${bike.photoBike}" required="required" />
-							</div>
-						</div>
-				</div>
-
-
-
-				<div class="form-group row">
-					<div class="col-sm-6">
-						<input type="submit" value="Guardar" class="btn btn-secondary"></input>
-						<a href="/bikes/list" class="btn btn-danger">Cancelar</a>
 					</div>
 				</div>
-
-				</form>
-
-				<p th:text="${mensaje}" class="form-text text-success"></p>
-
-
-
 			</div>
 			<!-- /.container-fluid -->
 
