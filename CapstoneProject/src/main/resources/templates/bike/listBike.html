@@ -178,7 +178,7 @@
 						</thead>
 						<tbody>
 							<tr th:each="b: ${listBike}">
-								<td><a class="btn btn-secondary btn-xs"
+								<td><a class="btn btn-danger btn-xs"
 									th:href="@{/bikes/view/} + ${b.idBike}"
 								    th:text="${b.idBike}"></a></td>
 								<td th:text="${b.brand.nameBrand}"></td>

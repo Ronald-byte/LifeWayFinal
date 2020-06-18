@@ -58,7 +58,7 @@ public class BikeController {
 		if (result.hasErrors()) {
 			model.addAttribute("listBrands", brS.list());
 			model.addAttribute("listStatus", sS.list());
-			model.addAttribute("listBike", bS.list());
+
 			return "bike/bike";
 		} else {
 			if (!photo.isEmpty()) {
@@ -79,7 +79,6 @@ public class BikeController {
 				flash.addFlashAttribute("info", "Has subido correctamente '" + uniqueFilename + "'");
 				bike.setPhotoBike(uniqueFilename);
 			}
-
 			bS.insert(bike);
 			model.addAttribute("mensaje", "Se guardó correctamente");
 			model.addAttribute("listBike", bS.list());
@@ -91,6 +90,7 @@ public class BikeController {
 	public String listBike(Model model) {
 		try {
 			model.addAttribute("listBike", bS.list());
+			model.addAttribute("bike",new Bike());
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}
