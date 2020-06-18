@@ -24,7 +24,6 @@ public class Employee implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idEmployee;
 	
-	//@Pattern(regexp = "[A-Z][a-z]*",message = "Ingrese el nombre nuevamente")
 	@Column(name="nameEmployee",nullable = false,length = 50)
 	private String nameEmployee;
 	
