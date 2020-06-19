@@ -20,7 +20,7 @@ public class Brand implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idBrand;
 	
-	@Pattern(regexp = "[a-zA-Z]+", message = "El nombre solo puede tener caracteres")
+	@Pattern(regexp = "[a-zA-Z-' '-ñ-Ñ]+", message = "El nombre solo puede tener caracteres")
 	@Column(name = "nameBrand", nullable = false, length = 30)
 	private String nameBrand;
 

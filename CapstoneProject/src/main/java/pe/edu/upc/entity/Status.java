@@ -20,7 +20,7 @@ public class Status implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idStatus;
 	
-	@Pattern(regexp = "[a-zA-Z]+", message = "El nombre solo puede tener caracteres")
+	@Pattern(regexp = "[a-zA-Z-' '-ñ-Ñ]+", message = "El nombre solo puede tener caracteres")
     @Column(name = "nameStatus", nullable = false, length = 30)
     private String nameStatus;
 
