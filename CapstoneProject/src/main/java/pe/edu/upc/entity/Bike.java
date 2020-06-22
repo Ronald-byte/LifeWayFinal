@@ -37,7 +37,7 @@ public class Bike implements Serializable {
 	@Column(name = "costBike", nullable = false, columnDefinition = "Decimal(8,2)")
 	private Double costBike;
 
-	@NotNull(message = "La fecha es obligatoria")
+
 	@Past(message = "La fecha debe estar en el pasado")
 	@Column(name = "purchaseDateBike", nullable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

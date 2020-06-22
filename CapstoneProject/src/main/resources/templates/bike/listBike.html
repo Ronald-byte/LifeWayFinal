@@ -163,6 +163,29 @@
 
 					<a th:href="@{/bikes/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
 
+					<form th:action="@{/bikes/search}" method="post"
+					th:object="${bike}">
+					<div class="form-group">
+						<table>
+
+							<tbody>
+								<tr>
+									<td><label for="idBike"
+										class="col-sm-2 col-form-label">Buscar:</label></td>
+									<td><input type="number" class="form-control"
+										th:field="*{idBike}" id="idBike"
+										placeholder="ID Bicicleta" required="required"></input></td>
+									<td><button type="submit" class="btn btn-secondary btn-xs">
+											<i class="iconf fa fa-search" style="color: white;"></i>
+										</button></td>
+									<td><a href="/bikes/list" class="btn btn-secondary btn-xs">Limpiar</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</form>
+
 					<hr class="sidebar-divider">
 
 					<table class="table table-striped">

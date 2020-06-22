@@ -2,6 +2,8 @@ package pe.edu.upc.controller;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.text.ParseException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,10 +81,23 @@ public class BikeController {
 				flash.addFlashAttribute("info", "Has subido correctamente '" + uniqueFilename + "'");
 				bike.setPhotoBike(uniqueFilename);
 			}
+
+			if (bike.getIdBike() > 0) {
+
+				// posible ubicacion
+
+				bS.update(bike);
+				model.addAttribute("listBike", bS.list());
+				model.addAttribute("mensaje", "Se actualizo correctamente");
+				return "redirect:/bikes/list";
+			} else {
+
+
 			bS.insert(bike);
 			model.addAttribute("mensaje", "Se guardó correctamente");
 			model.addAttribute("listBike", bS.list());
 			return "redirect:/bikes/list";
+			}
 		}
 	}
 
@@ -108,7 +123,7 @@ public class BikeController {
 			model.addAttribute("listBrands", brS.list());
 			model.addAttribute("listStatus", sS.list());
 			model.addAttribute("bike", objBi.get());
-			return "bike/bike";
+			return "bike/bikeUpdate";
 		}
 	}
 
@@ -120,7 +135,6 @@ public class BikeController {
 		try {
 			recurso = uploadFileService.load(filename);
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ResponseEntity.ok()
@@ -133,11 +147,25 @@ public class BikeController {
 
 		Optional<Bike> bike = bS.searchId(id);
 		if (bike == null) {
-			flash.addFlashAttribute("error", "El Producto no existe en la base de datos");
+			flash.addFlashAttribute("error", "La bicicleta no existe en la base de datos");
 			return "redirect:/bikes/list";
 		}
 		model.addAttribute("bike", bike.get());
 		return "bike/view";
+	}
+
+	@RequestMapping("/search")
+	public String searchBikes(Model model, @Validated Bike bike) throws ParseException {
+		List<Bike> listBikes;
+		listBikes = bS.search(bike.getIdBike());
+		model.addAttribute("bike", new Bike());
+		if (listBikes.isEmpty()) {
+
+			model.addAttribute("mensaje", "No se encontró");
+		}
+		model.addAttribute("listBike", listBikes);
+		return "bike/listBike";
+
 	}
 	
 }
