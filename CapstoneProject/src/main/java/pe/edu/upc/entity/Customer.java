@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -45,18 +47,35 @@ public class Customer implements Serializable {
 
 	@Column(name = "addressCustomer", nullable = false, length = 50)
     private String addressCustomer;
+	
+	@ManyToOne
+	@JoinColumn(name = "idStatus")
+	private Status status;
 
 
-    public Customer(int idCustomer, String nameCustomer, String paternalSurnameCustomer, String maternalSurnameCustomer, String emailCustomer, String phoneNumberCustomer, String addressCustomer) {
+
+	public Customer(int idCustomer,
+			 String nameCustomer,
+			 String paternalSurnameCustomer,
+			 String maternalSurnameCustomer,
+			String emailCustomer,
+			 String phoneNumberCustomer,
+			String addressCustomer, Status status) {
 		super();
-        this.idCustomer = idCustomer;
-        this.nameCustomer = nameCustomer;
-        this.paternalSurnameCustomer = paternalSurnameCustomer;
-        this.maternalSurnameCustomer = maternalSurnameCustomer;
-        this.emailCustomer = emailCustomer;
-        this.phoneNumberCustomer = phoneNumberCustomer;
-        this.addressCustomer = addressCustomer;
+		this.idCustomer = idCustomer;
+		this.nameCustomer = nameCustomer;
+		this.paternalSurnameCustomer = paternalSurnameCustomer;
+		this.maternalSurnameCustomer = maternalSurnameCustomer;
+		this.emailCustomer = emailCustomer;
+		this.phoneNumberCustomer = phoneNumberCustomer;
+		this.addressCustomer = addressCustomer;
+		this.status = status;
 	}
+
+
+
+
+
 	public Customer() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -135,4 +154,13 @@ public class Customer implements Serializable {
         this.addressCustomer = addressCustomer;
     }
 
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+    
 }

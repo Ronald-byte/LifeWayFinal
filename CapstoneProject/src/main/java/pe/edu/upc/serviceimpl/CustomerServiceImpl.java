@@ -1,6 +1,7 @@
 package pe.edu.upc.serviceimpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -42,4 +43,8 @@ public class CustomerServiceImpl implements ICustomerService {
 		return cR.findBynameCustomer(nameCustomer);
 	}
 
+	public Optional<Customer> searchId(int idCustomer)
+	{
+		return cR.findById(idCustomer);
+	}
 }

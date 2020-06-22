@@ -77,7 +77,7 @@
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/rentalTickets/list}">Boleta
-							de Alquiler</a>		
+							de Alquiler</a>
 					</div>
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/users/list}">Usuarios</a>
@@ -165,7 +165,29 @@
 					<a th:href="@{/customers/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
 
 					<!-- buscar -->
+					<form th:action="@{/customers/search}" method="post"
+						th:object="${customer}">
 
+						<div class="form-group">
+							<table>
+
+								<tbody>
+									<tr>
+										<td><label for="nameCustomer"
+											class="col-sm-2 col-form-label">Buscar:</label></td>
+										<td><input type="text" class="form-control"
+											th:field="*{nameCustomer}" id="nameCustomer"
+											placeholder="Nombre cliente" required="required"
+											pattern=[A-Za-z]+></input></td>
+										<td><button type="submit" class="btn btn-danger">
+												<i class="iconf fa fa-search" style="color: white;"></i>
+											</button></td>
+										<td><a href="/customers/list" class="btn btn-danger">Limpiar</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
 					<!-- buscar -->
 
 					<hr class="sidebar-divider">
@@ -180,6 +202,8 @@
 								<th scope="col">Correo</th>
 								<th scope="col">Numero</th>
 								<th scope="col">Direccion</th>
+								<th scope="col">Estado</th>
+								<th scope="col">Operación</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -191,6 +215,12 @@
 								<td th:text="${cate.emailCustomer}"></td>
 								<td th:text="${cate.phoneNumberCustomer}"></td>
 								<td th:text="${cate.addressCustomer}"></td>
+								<td th:text="${cate.status.nameStatus}"></td>
+								<td> 
+								<a th:href="@{'/customers/irupdate/'+${cate.idCustomer}}">
+								<i class="iconf fa fa-pen" style="color:orange"></i>
+								</a>
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -226,30 +256,30 @@
 
 	<!-- Logout Modal-->
 	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">¿Listo para
-					salir?</h5>
-				<button class="close" type="button" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">×</span>
-				</button>
-			</div>
-			<div class="modal-body">Seleccione "Cerrar sesión" a
-				continuación si está listo para finalizar su sesión actual.</div>
-			<div class="modal-footer">
-				<form id="logoutForm" th:action="@{/logout}" method="post">
-					<button class="btn btn-danger"
-						onclick="document.getElementById('logoutForm').submit();"
-						type="submit">Cerrar</button>
-					<button class="btn btn-dark" type="button" data-dismiss="modal"
-						th:href="@{/customers/list}">Cancel</button>
-				</form>
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">¿Listo para
+						salir?</h5>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Seleccione "Cerrar sesión" a
+					continuación si está listo para finalizar su sesión actual.</div>
+				<div class="modal-footer">
+					<form id="logoutForm" th:action="@{/logout}" method="post">
+						<button class="btn btn-danger"
+							onclick="document.getElementById('logoutForm').submit();"
+							type="submit">Cerrar</button>
+						<button class="btn btn-dark" type="button" data-dismiss="modal"
+							th:href="@{/customers/list}">Cancel</button>
+					</form>
+				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 
 	<!-- Bootstrap core JavaScript-->
