@@ -25,10 +25,10 @@ public class Users implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(length = 30, unique = true)
+	@Column(length = 30, unique = true, nullable = false)
 	private String username;
 
-	@Column(length = 200)
+	@Column(length = 200, nullable = false)
 	private String password;
 
 	private Boolean enabled;

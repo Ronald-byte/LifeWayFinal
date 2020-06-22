@@ -37,7 +37,7 @@ public class RolController {
 		} else {
 			rS.insert(role);
 			model.addAttribute("listRoles", rS.list());
-			return "rol/listRoles";
+			return "redirect:/rol/listRoles";
 
 		}
 	}
