@@ -5,11 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -20,8 +16,6 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Min(10000000)
-	@Max(99999999)
 	@Column(name = "idCustomer", nullable = false, length = 30)
     private int idCustomer;
 	
@@ -51,17 +45,12 @@ public class Customer implements Serializable {
 	private Boolean enabled;
 
 
-
-
-
-
-
-	public Customer(@Min(10000000) @Max(99999999) int idCustomer,
-			@Pattern(regexp = "[a-zA-Z]+", message = "El nombre solo puede tener caracteres") String nameCustomer,
-			@Pattern(regexp = "[a-zA-Z]+", message = "El apellido paterno solo puede tener caracteres") String paternalSurnameCustomer,
-			@Pattern(regexp = "[a-zA-Z]+", message = "El apellido materno solo puede tener caracteres") String maternalSurnameCustomer,
+	public Customer(int idCustomer,
+			String nameCustomer,
+			 String paternalSurnameCustomer,
+			String maternalSurnameCustomer,
 			String emailCustomer,
-			@Pattern(regexp = "[0-9]+", message = "El número de telefono solo puede tener valores numericos") @Size(min = 9, message = "El numero de telefono debe tener 9 caracteres") String phoneNumberCustomer,
+			String phoneNumberCustomer,
 			String addressCustomer, Boolean enabled) {
 		super();
 		this.idCustomer = idCustomer;
