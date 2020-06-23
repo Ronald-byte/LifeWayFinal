@@ -28,13 +28,10 @@ public class CustomerController {
 	@Autowired
 	private ICustomerService cS;
 	
-	@Autowired
-	private IStatusService sS;
 	
 	@GetMapping("/new")
 	public String newCustomer(Model model) {
 		model.addAttribute("customer",new Customer());
-		model.addAttribute("listStatus", sS.list());
 		return "customer/customer";
 	}
 	
@@ -47,7 +44,6 @@ public class CustomerController {
 			if (rpta > 0)
 			{
 				model.addAttribute("mensaje", "Este cliente ya existe");
-				model.addAttribute("listStatus", sS.list());
 				return "customer/customer";
 			}else
 			{
@@ -93,7 +89,6 @@ public class CustomerController {
 			objRedir.addFlashAttribute("mensaje", "Ocurrió un error");
 			return "redirect:/customers/list";
 		} else {
-			model.addAttribute("listStatus", sS.list());
 			model.addAttribute("customer", objCu.get());
 			return "customer/customer";
 		}

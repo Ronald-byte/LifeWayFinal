@@ -48,19 +48,21 @@ public class Customer implements Serializable {
 	@Column(name = "addressCustomer", nullable = false, length = 50)
     private String addressCustomer;
 	
-	@ManyToOne
-	@JoinColumn(name = "idStatus")
-	private Status status;
+	private Boolean enabled;
 
 
 
-	public Customer(int idCustomer,
-			 String nameCustomer,
-			 String paternalSurnameCustomer,
-			 String maternalSurnameCustomer,
+
+
+
+
+	public Customer(@Min(10000000) @Max(99999999) int idCustomer,
+			@Pattern(regexp = "[a-zA-Z]+", message = "El nombre solo puede tener caracteres") String nameCustomer,
+			@Pattern(regexp = "[a-zA-Z]+", message = "El apellido paterno solo puede tener caracteres") String paternalSurnameCustomer,
+			@Pattern(regexp = "[a-zA-Z]+", message = "El apellido materno solo puede tener caracteres") String maternalSurnameCustomer,
 			String emailCustomer,
-			 String phoneNumberCustomer,
-			String addressCustomer, Status status) {
+			@Pattern(regexp = "[0-9]+", message = "El número de telefono solo puede tener valores numericos") @Size(min = 9, message = "El numero de telefono debe tener 9 caracteres") String phoneNumberCustomer,
+			String addressCustomer, Boolean enabled) {
 		super();
 		this.idCustomer = idCustomer;
 		this.nameCustomer = nameCustomer;
@@ -69,7 +71,7 @@ public class Customer implements Serializable {
 		this.emailCustomer = emailCustomer;
 		this.phoneNumberCustomer = phoneNumberCustomer;
 		this.addressCustomer = addressCustomer;
-		this.status = status;
+		this.enabled = enabled;
 	}
 
 
@@ -154,13 +156,23 @@ public class Customer implements Serializable {
         this.addressCustomer = addressCustomer;
     }
 
-	public Status getStatus() {
-		return status;
+
+
+
+
+	public Boolean getEnabled() {
+		return enabled;
 	}
 
-	public void setStatus(Status status) {
-		this.status = status;
+
+
+
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
+
+
 
     
 }
