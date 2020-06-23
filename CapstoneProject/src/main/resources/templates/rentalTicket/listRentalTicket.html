@@ -183,7 +183,7 @@
 						<tbody>
 							<tr th:each="r: ${listRentalTicket}">
 								<td th:text="${r.idRentalTicket}"></td>
-								<td th:text="${r.rentalDateRentalTicket}"></td>
+								<td th:text="${#dates.format(r.rentalDateRentalTicket,'dd/MM/yyyy')}"></td>
 								<td th:text="${r.numberHoursRentalTicket}"></td>
 								<td th:text="${r.costRateRentalTicket}"></td>
 								<td th:text="${r.customer.nameCustomer}"></td>

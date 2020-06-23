@@ -71,7 +71,7 @@ public class CustomerController {
 	{
 		List<Customer> listCustomer;
 		model.addAttribute("customer", new Customer());
-		listCustomer = cS.findNameCustumerFull(customer.getNameCustomer());
+		listCustomer = cS.findNameCustumerFull(customer.getIdCustomer());
 		if (listCustomer.isEmpty())
 		{
 			model.addAttribute("mensaje", "No se encontre este cliente");

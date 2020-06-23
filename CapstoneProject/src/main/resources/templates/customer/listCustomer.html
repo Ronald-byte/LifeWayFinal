@@ -175,10 +175,10 @@
 									<tr>
 										<td><label for="nameCustomer"
 											class="col-sm-2 col-form-label">Buscar:</label></td>
-										<td><input type="text" class="form-control"
-											th:field="*{nameCustomer}" id="nameCustomer"
-											placeholder="Nombre cliente" required="required"
-											pattern=[A-Za-z]+></input></td>
+										<td><input type="number" class="form-control"
+											th:field="*{idCustomer}" id="idCustomer"
+											placeholder="DNI cliente" required="required"
+											pattern=[0-9]+></input></td>
 										<td><button type="submit" class="btn btn-danger">
 												<i class="iconf fa fa-search" style="color: white;"></i>
 											</button></td>

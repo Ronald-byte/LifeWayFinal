@@ -38,9 +38,9 @@ public class CustomerServiceImpl implements ICustomerService {
 	}
 
 	@Override
-	public List<Customer> findNameCustumerFull(String nameCustomer) {
+	public List<Customer> findNameCustumerFull(int idCustomer) {
 		// TODO Auto-generated method stub
-		return cR.findBynameCustomer(nameCustomer);
+		return cR.findBynameCustomer(idCustomer);
 	}
 
 	public Optional<Customer> searchId(int idCustomer)
