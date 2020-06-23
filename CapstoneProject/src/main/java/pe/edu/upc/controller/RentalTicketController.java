@@ -24,7 +24,7 @@ import pe.edu.upc.serviceinterface.IRentalTicketService;
 
 @Controller
 @RequestMapping("/rentalTickets")
-@Secured("ROLE_ADMIN")
+@Secured({"ROLE_ADMIN","ROLE_USER"})
 public class RentalTicketController {
 
 	@Autowired

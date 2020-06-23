@@ -100,7 +100,8 @@ public class BikeController {
 			}
 		}
 	}
-
+	
+	@Secured("ROLE_USER")
 	@GetMapping("/list")
 	public String listBike(Model model) {
 		try {
