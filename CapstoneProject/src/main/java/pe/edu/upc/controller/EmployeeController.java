@@ -132,7 +132,7 @@ public class EmployeeController {
 			System.out.println(e.getMessage());
 			model.addAttribute("listEmployee", eS.list());
 		}
-		return "employee/listEmployee";
+		return "redirect:/employees/list";
 	}
 
 	@RequestMapping("/irupdate/{id}")
