@@ -33,7 +33,7 @@ import pe.edu.upc.serviceinterface.IUploadFileService;
 
 @Controller
 @RequestMapping("/bikes")
-@Secured("ROLE_ADMIN")
+@Secured({"ROLE_ADMIN"})
 public class BikeController {
 
 	@Autowired
@@ -101,7 +101,7 @@ public class BikeController {
 		}
 	}
 	
-	@Secured("ROLE_USER")
+	@Secured({"ROLE_USER", "ROLE_ADMIN"})
 	@GetMapping("/list")
 	public String listBike(Model model) {
 		try {

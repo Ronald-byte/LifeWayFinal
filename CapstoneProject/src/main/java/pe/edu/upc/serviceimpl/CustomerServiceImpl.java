@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import pe.edu.upc.entity.Bike;
 import pe.edu.upc.entity.Customer;
 import pe.edu.upc.repository.ICustomerRepository;
 import pe.edu.upc.serviceinterface.ICustomerService;
@@ -21,7 +22,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	@Transactional
 	@Override
 	public int insert(Customer customer) {
-		int rpta = cR.searchCustomer(customer.getNameCustomer());
+		int rpta = cR.searchCustomer(customer.getIdCustomer());
 		if (rpta == 0)
 		{
 			cR.save(customer);
@@ -35,6 +36,12 @@ public class CustomerServiceImpl implements ICustomerService {
 	public List<Customer> list() {
 		// TODO Auto-generated method stub
 		return cR.findAll();
+	}
+	
+	@Transactional
+	@Override
+	public void update(Customer customer) {
+		cR.save(customer);
 	}
 
 	@Override

@@ -12,8 +12,8 @@ import pe.edu.upc.entity.Customer;
 
 @Repository
 public interface ICustomerRepository extends JpaRepository<Customer, Integer>{
-	@Query("select count(c.nameCustomer) from Customer c where UPPER(c.nameCustomer)=:nameCustomer or LOWER(c.nameCustomer)=:nameCustomer")
-	public int searchCustomer(@Param("nameCustomer") String nombre);
+	@Query("select count(c.idCustomer) from Customer c where c.idCustomer=:idCustomer")
+	public int searchCustomer(@Param("idCustomer") int idCustomer);
 	
 	@Query("select c from Customer c where c.idCustomer = :busqueda")
 	List<Customer> findBynameCustomer(@Param("busqueda")int idCustomer);

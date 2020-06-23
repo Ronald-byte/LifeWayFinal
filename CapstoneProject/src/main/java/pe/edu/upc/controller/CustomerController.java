@@ -18,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pe.edu.upc.entity.Customer;
 import pe.edu.upc.serviceinterface.ICustomerService;
-import pe.edu.upc.serviceinterface.IStatusService;
 
 @Controller
 @RequestMapping("/customers")
@@ -43,8 +42,9 @@ public class CustomerController {
 			int rpta = cS.insert(customer);
 			if (rpta > 0)
 			{
-				model.addAttribute("mensaje", "Este cliente ya existe");
-				return "customer/customer";
+				cS.update(customer);
+				model.addAttribute("mensaje", "Se actualizo correctamente");
+				return "redirect:/customers/list";
 			}else
 			{
 				model.addAttribute("listCustomer", cS.list());
@@ -90,7 +90,7 @@ public class CustomerController {
 			return "redirect:/customers/list";
 		} else {
 			model.addAttribute("customer", objCu.get());
-			return "customer/customer";
+			return "customer/customerUpdate";
 		}
 	}
 }
