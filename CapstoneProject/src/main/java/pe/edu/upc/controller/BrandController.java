@@ -40,10 +40,11 @@ public class BrandController {
 			if (rpta > 0) {
 			model.addAttribute("mensaje", "Ya existe la Marca");
 			return "brand/brand";
-			}
+			}else {
 			model.addAttribute("mensaje", "Se guardó correctamente");
 			model.addAttribute("listBrand", bS.list());
 			return "brand/listBrand";
+			}
 		}
 	}
 	
