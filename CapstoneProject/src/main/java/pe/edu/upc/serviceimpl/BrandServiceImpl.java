@@ -20,9 +20,14 @@ public class BrandServiceImpl implements IBrandService{
 	
 	@Transactional
 	@Override
-	public void insert(Brand brand) {
-		bR.save(brand);
+	public int insert(Brand brand) {
 		// TODO Auto-generated method stub
+		int rpta=bR.searchBrand(brand.getNameBrand());
+		if(rpta==0)
+		{
+			bR.save(brand);
+		}
+		return rpta;
 		
 	}
 

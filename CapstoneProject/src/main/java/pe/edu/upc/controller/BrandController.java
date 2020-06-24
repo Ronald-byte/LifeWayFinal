@@ -36,7 +36,11 @@ public class BrandController {
 		if(result.hasErrors()) {
 			return "brand/brand";
 		}else {
-			bS.insert(brand);
+			int rpta = bS.insert(brand);
+			if (rpta > 0) {
+			model.addAttribute("mensaje", "Ya existe la Marca");
+			return "brand/brand";
+			}
 			model.addAttribute("mensaje", "Se guardó correctamente");
 			model.addAttribute("listBrand", bS.list());
 			return "brand/listBrand";

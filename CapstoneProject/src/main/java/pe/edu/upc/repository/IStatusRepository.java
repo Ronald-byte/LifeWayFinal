@@ -10,6 +10,6 @@ import pe.edu.upc.entity.Status;
 @Repository
 public interface IStatusRepository extends JpaRepository<Status, Integer>{
 
-	@Query("select count(c.nameStatus) from Status c where c.nameStatus=LOWER(:nameStatus) or c.nameStatus=UPPER(:nameStatus)")
-	public int searchCategory(@Param("nameStatus")String nombre);
+	@Query("select count(c.nameStatus) from Status c where c.nameStatus=LOWER(:nameStatus) or c.nameStatus=UPPER(:nameStatus)or c.nameStatus=:nameStatus")
+	public int searchStatus(@Param("nameStatus")String nombre);
 }

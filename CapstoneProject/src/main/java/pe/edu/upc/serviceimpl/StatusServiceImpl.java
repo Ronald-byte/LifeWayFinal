@@ -20,9 +20,14 @@ public class StatusServiceImpl implements IStatusService{
 
 	@Transactional
 	@Override
-	public void insert(Status status) {
-		sR.save(status);
+	public int insert(Status status) {
 		// TODO Auto-generated method stub
+		int rpta=sR.searchStatus(status.getNameStatus());
+		if(rpta==0)
+		{
+			sR.save(status);
+		}
+		return rpta;
 		
 	}
 

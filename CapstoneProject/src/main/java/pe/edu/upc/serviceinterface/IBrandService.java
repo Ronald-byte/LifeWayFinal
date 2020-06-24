@@ -7,7 +7,7 @@ import pe.edu.upc.entity.Brand;
 
 public interface IBrandService {
 	
-	public void insert(Brand brand);
+	public int insert(Brand brand);
 	List<Brand>list();
 	Optional<Brand>searchId(int idBrand);
 }

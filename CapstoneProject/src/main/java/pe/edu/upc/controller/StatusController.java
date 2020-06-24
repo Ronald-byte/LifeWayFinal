@@ -36,9 +36,15 @@ public class StatusController {
 		if(result.hasErrors()) {
 			return "status/status";
 		}else {
-			sS.insert(status);
+			int rpta = sS.insert(status);
+			if(rpta > 0){
+				model.addAttribute("mensaje", "Ya existe el Estado");
+				return "status/status";
+			}else{
+				model.addAttribute("mensaje", "Se guardó correctamente");
 			model.addAttribute("listStatus", sS.list());
 			return "status/listStatus";
+			}
 		}
 	}
 	

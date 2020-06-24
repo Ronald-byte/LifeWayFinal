@@ -7,7 +7,7 @@ import pe.edu.upc.entity.Status;
 
 public interface IStatusService {
 
-	public void insert(Status status);
+	public int insert(Status status);
 	List<Status>list();
 	Optional<Status>searchId(int idStatus);
 }
