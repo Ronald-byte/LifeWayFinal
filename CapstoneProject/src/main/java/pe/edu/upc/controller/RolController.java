@@ -29,7 +29,6 @@ public class RolController {
 		model.addAttribute("listUsers", uS.list());
 		return "rol/role";
 	}
-
 	@PostMapping("/save")
 	public String saveRole(@Validated Role role, BindingResult result, Model model) throws Exception {
 		if (result.hasErrors()) {
@@ -38,10 +37,8 @@ public class RolController {
 			rS.insert(role);
 			model.addAttribute("listRoles", rS.list());
 			return "rol/listRoles";
-
 		}
 	}
-
 	@GetMapping("/list")
 	public String listRole(Model model) {
 		try {
