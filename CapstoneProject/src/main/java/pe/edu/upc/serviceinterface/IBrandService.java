@@ -10,4 +10,5 @@ public interface IBrandService {
 	public int insert(Brand brand);
 	List<Brand>list();
 	Optional<Brand>searchId(int idBrand);
+	public List<String[]> brandtop();
 }

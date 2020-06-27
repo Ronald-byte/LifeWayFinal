@@ -42,6 +42,12 @@ public class BrandServiceImpl implements IBrandService{
 	public Optional<Brand> searchId(int idBrand) {
 		return bR.findById(idBrand);
 	}
+
+	@Override
+	public List<String[]> brandtop() {
+		// TODO Auto-generated method stub
+		return bR.brandTop();
+	}
 	
 	
 	

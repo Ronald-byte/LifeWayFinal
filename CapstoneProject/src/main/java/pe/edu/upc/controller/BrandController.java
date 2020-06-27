@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Map;
 import java.util.Optional;
 
 import pe.edu.upc.entity.Brand;
@@ -69,5 +70,16 @@ public class BrandController {
 			model.addAttribute("brand",objBra.get());
 			return "brand/brand";
 		}
+	}
+	
+	@RequestMapping("/reporte1")
+	public String brandTop(Map<String, Object> model) {
+		model.put("listBrandTop", bS.brandtop());
+		return "redirect:reports/brandTop";
+}
+	@RequestMapping("/reports")
+	public String Report()
+	{
+		return "reports/reports";
 	}
 }
