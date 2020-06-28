@@ -93,9 +93,4 @@ public class TypeEmployeeController {
 		return "reports/typeTop";
 	}
 
-	@RequestMapping("/reports")
-	public String Report() {
-		return "reports/reports";
-	}
-
 }
