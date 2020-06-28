@@ -13,4 +13,6 @@ public interface ITypeEmployeeService {
 	Optional<TypeEmployee> searchId(int idTypeEmployee);
 	
 	List<TypeEmployee> findByNameTypeEmployeeFull(String nameTypeEmployee);
+	
+	public List<String[]> typetop();
 }

@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>LifeWay</title>
+<title>2020</title>
 
 <!-- Custom fonts for this template-->
 <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -36,8 +36,11 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				th:href="@{/brands/list}"> <img th:src="@{/img/logo.png}"
-				width="190" height="60" alt="logo" align="middle"></img>
+				th:href="@{/brands/list}">
+				<div class="sidebar-brand-icon rotate-n-15">
+					<i class="fas fa-leaf"></i>
+				</div>
+				<div class="sidebar-brand-text mx-2">Programación en Web</div>
 			</a>
 
 			<!-- Divider -->
@@ -46,7 +49,7 @@
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-target="#collapseTwo" aria-expanded=true
+				data-target="#collapseTwo" aria-expanded="false"
 				aria-controls="collapseTwo"> <i class="fas fa-fw fa-cog"></i> <span>Men&uacute;</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
@@ -153,127 +156,91 @@
 				</nav>
 				<!-- End of Topbar -->
 
-				<!-- Begin Page Content -->
-				<div class="container-fluid">
 
-					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Marca</h1>
+				<div class="bg row">
 
-					<hr class="sidebar-divider">
-					<div th:object="${brand}" th:remove="tag">
-						<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
-							role="alert">
-							<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
-						</ul>
+					<div class="content container">
+						<div class="cinforeport">
+							<h3 class="title-content">Tipo de empleado más demandados</h3>
+							<p class="inforeport">Lista de tipos de empleados más demandadas</p>
+						</div>
+						<table class="table">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col" class="text-center">Tipo de empleado</th>
+									<th scope="col" class="text-center">Presencia en
+										los alquileres</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="rep : ${listTypeEmployeeTop}">
+									<td class="text-center" th:text="${rep[0]}"></td>
+									<td class="text-center" th:text="${rep[1]}"></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 
-					<form th:action="@{/brands/save}" th:object="${brand}"method="post">
-						<div class="form-group row" style="display: none">
-							<label for="name" class="col-sm-2 col-form-label">ID</label>
-							<div class="col-sm-6">
-								<input type="text" th:field="*{idBrand}"
-									class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('idBrand')}"
-									th:errors="*{idBrand}"></small>
-							</div>
-						</div>
-						
-						
-						
-						
-						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Marca</label>
-							<div class="col-sm-6">
-								<input type="text" th:field="*{nameBrand}" class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('nameBrand')}"
-									th:errors="*{nameBrand}"></small>
-							</div>
-						</div>
-
-
-
-						<div class="form-group row">
-							<div class="col-sm-6">
-								<input type="submit" value="Guardar" class="btn btn-secondary"></input>
-								<a href="/brands/list" class="btn btn-danger">Cancelar</a>
-							</div>
-						</div>
-
-					</form>
-					<p th:text="${mensaje}"></p>
-
-
-
-
 				</div>
-				<!-- /.container-fluid -->
+
+				<!-- Footer -->
+				<footer class="sticky-footer bg-white">
+					<div class="container my-auto">
+						<div class="copyright text-center my-auto">
+							<span>Copyright &copy; Grupo 1 Web 2020</span>
+						</div>
+					</div>
+				</footer>
+				<!-- End of Footer -->
 
 			</div>
-			<!-- End of Main Content -->
-
-			<!-- Footer -->
-			<footer class="sticky-footer bg-white">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Grupo 1 2020</span>
-					</div>
-				</div>
-			</footer>
-			<!-- End of Footer -->
+			<!-- End of Content Wrapper -->
 
 		</div>
-		<!-- End of Content Wrapper -->
+		<!-- End of Page Wrapper -->
 
-	</div>
-	<!-- End of Page Wrapper -->
-
-	<!-- Scroll to Top Button-->
-	<a class="scroll-to-top rounded" href="#page-top"> <i
-		class="fas fa-angle-up"></i>
-	</a>
+		<!-- Scroll to Top Button-->
+		<a class="scroll-to-top rounded" href="#page-top"> <i
+			class="fas fa-angle-up"></i>
+		</a>
 
 		<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-	<div class="modal-content">
-		<div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">¿Listo para
-				salir?</h5>
-			<button class="close" type="button" data-dismiss="modal"
-				aria-label="Close">
-				<span aria-hidden="true">×</span>
-			</button>
+		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">¿Listo para
+							salir?</h5>
+						<button class="close" type="button" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">Seleccione "Cerrar sesión" a
+						continuación si está listo para finalizar su sesión actual</div>
+					<div class="modal-footer">
+						<form id="logoutForm" th:action="@{/logout}" method="post">
+							<button class="btn btn-danger"
+								onclick="document.getElementById('logoutForm').submit();"
+								type="submit">Cerrar</button>
+							<button class="btn btn-dark" type="button" data-dismiss="modal"
+								th:href="@{/categories/list}">Cancel</button>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="modal-body">Seleccione "Cerrar sesión" a
-			continuación si está listo para finalizar su sesión actual.</div>
-		<div class="modal-footer">
-			<form id="logoutForm" th:action="@{/logout}" method="post">
-				<button class="btn btn-danger"
-					onclick="document.getElementById('logoutForm').submit();"
-					type="submit">Cerrar</button>
-				<button class="btn btn-dark" type="button" data-dismiss="modal"
-					th:href="@{/brands/list}">Cancel</button>
-			</form>
-		</div>
-	</div>
-</div>
-</div>
 
-	<!-- Bootstrap core JavaScript-->
-	<script src="/vendor/jquery/jquery.min.js"></script>
-	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<!-- Bootstrap core JavaScript-->
+		<script src="/vendor/jquery/jquery.min.js"></script>
+		<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	<!-- Core plugin JavaScript-->
-	<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+		<!-- Core plugin JavaScript-->
+		<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-	<!-- Custom scripts for all pages-->
-	<script src="/js/sb-admin-2.min.js"></script>
-
+		<!-- Custom scripts for all pages-->
+		<script src="/js/sb-admin-2.min.js"></script>
 </body>
 
 </html>

@@ -36,7 +36,7 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				th:href="@{/brands/list}"> <img th:src="@{/img/logo.png}"
+				th:href="@{/bikes/list}"> <img th:src="@{/img/logo.png}"
 				width="190" height="60" alt="logo" align="middle"></img>
 			</a>
 
@@ -46,7 +46,7 @@
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
-				data-target="#collapseTwo" aria-expanded=true
+				data-target="#collapseTwo" aria-expanded="false"
 				aria-controls="collapseTwo"> <i class="fas fa-fw fa-cog"></i> <span>Men&uacute;</span>
 			</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
@@ -154,79 +154,74 @@
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
-				<div class="container-fluid">
+				<div class="container">
+					<div class="card">
+						<div class="card-header text-white bg-dark mb-3">Detalle de
+							Bicicleta</div>
+						<div class="card-body">
 
-					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Marca</h1>
+							<div class="table-responsive">
+								<table class="table table-white">
 
-					<hr class="sidebar-divider">
-					<div th:object="${brand}" th:remove="tag">
-						<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
-							role="alert">
-							<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
-						</ul>
+									<tbody>
+										<tr>
+											<td>Id</td>
+											<td th:text="${bike.idBike}"></td>
+										</tr>
+										<tr>
+											<td>Marca</td>
+											<td th:text="${bike.brand.nameBrand}"></td>
+										</tr>
+										<tr>
+											<td>Costo</td>
+											<td th:text="${bike.costBike}"></td>
+										</tr>
+										<tr>
+											<td>Fecha de Compra</td>
+											<td th:text="${#dates.format(bike.purchaseDateBike,'dd/MM/yyyy')}"></td>
+										</tr>
+										<tr>
+											<td>Estado</td>
+											<td th:text="${bike.status.nameStatus}"></td>
+										</tr>
+										<tr>
+											<td>Foto</td>
+											<td><img th:if="${#strings.length(bike.photoBike)> 0}"
+												class="img-thumbnail rounded float-left"
+												style="max-width: 50%;"
+												th:src="@{'/bikes/uploads/' + ${bike.photoBike}}"
+												th:alt="${bike.photoBike}" /></td>
+										</tr>
+									</tbody>
+
+								</table>
+
+								<a th:href="@{/bikes/list}" type="button"
+									class="btn btn-danger k"> <span
+									class="glyphicon glyphicon-circle-arrow-left"></span> Volver
+								</a>
+							</div>
+						</div>
 					</div>
-
-					<form th:action="@{/brands/save}" th:object="${brand}"method="post">
-						<div class="form-group row" style="display: none">
-							<label for="name" class="col-sm-2 col-form-label">ID</label>
-							<div class="col-sm-6">
-								<input type="text" th:field="*{idBrand}"
-									class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('idBrand')}"
-									th:errors="*{idBrand}"></small>
-							</div>
-						</div>
-						
-						
-						
-						
-						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label">Marca</label>
-							<div class="col-sm-6">
-								<input type="text" th:field="*{nameBrand}" class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('nameBrand')}"
-									th:errors="*{nameBrand}"></small>
-							</div>
-						</div>
-
-
-
-						<div class="form-group row">
-							<div class="col-sm-6">
-								<input type="submit" value="Guardar" class="btn btn-secondary"></input>
-								<a href="/brands/list" class="btn btn-danger">Cancelar</a>
-							</div>
-						</div>
-
-					</form>
-					<p th:text="${mensaje}"></p>
-
-
-
-
 				</div>
-				<!-- /.container-fluid -->
-
 			</div>
-			<!-- End of Main Content -->
-
-			<!-- Footer -->
-			<footer class="sticky-footer bg-white">
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Grupo 1 2020</span>
-					</div>
-				</div>
-			</footer>
-			<!-- End of Footer -->
+			<!-- /.container-fluid -->
 
 		</div>
-		<!-- End of Content Wrapper -->
+		<!-- End of Main Content -->
+
+		<!-- Footer -->
+		<footer class="sticky-footer bg-white">
+			<div class="container my-auto">
+				<div class="copyright text-center my-auto">
+					<span>Copyright &copy; Grupo 1 2020</span>
+				</div>
+			</div>
+		</footer>
+		<!-- End of Footer -->
+
+	</div>
+	<!-- End of Content Wrapper -->
 
 	</div>
 	<!-- End of Page Wrapper -->
@@ -236,7 +231,7 @@
 		class="fas fa-angle-up"></i>
 	</a>
 
-		<!-- Logout Modal-->
+	<!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
 aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
@@ -257,7 +252,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 					onclick="document.getElementById('logoutForm').submit();"
 					type="submit">Cerrar</button>
 				<button class="btn btn-dark" type="button" data-dismiss="modal"
-					th:href="@{/brands/list}">Cancel</button>
+					th:href="@{/bikes/list}">Cancel</button>
 			</form>
 		</div>
 	</div>

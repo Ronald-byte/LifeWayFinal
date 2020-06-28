@@ -49,5 +49,12 @@ public class TypeEmployeeServiceImpl implements ITypeEmployeeService {
 		return teR.findBynameTypeEmployee(nameTypeEmployee);
 	}
 
+	@Override
+	public List<String[]> typetop() {
+		// TODO Auto-generated method stub
+		return teR.typeTop();
+	}
+
+	
 
 }

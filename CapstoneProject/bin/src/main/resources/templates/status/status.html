@@ -82,6 +82,9 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/roles/list}">Roles</a>
 					</div>
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/brands/reports}">Reportes</a>
+					</div>
 				</div></li>
 
 			<!-- Sidebar Toggler (Sidebar) -->
@@ -167,7 +170,7 @@
 					<form th:action="@{/status/save}" th:object="${status}"
 						method="post">
 						
-						<div class="form-group row">
+						<div class="form-group row" style="display: none">
 							<label for="name" class="col-sm-2 col-form-label">ID</label>
 							<div class="col-sm-6">
 								<input type="text" th:field="*{idStatus}"

@@ -16,5 +16,8 @@ public interface ITypeEmployeeRepository extends JpaRepository<TypeEmployee, Int
 	
 	@Query("select c from TypeEmployee c where c.nameTypeEmployee LIKE CONCAT('%',:nameTypeEmployee,'%') OR UPPER(c.nameTypeEmployee) LIKE CONCAT('%',nameTypeEmployee,'%') or LOWER(c.nameTypeEmployee) LIKE CONCAT('%',:nameTypeEmployee,'%')")
 	List<TypeEmployee> findBynameTypeEmployee(@Param("nameTypeEmployee") String nameType);
+	
+	@Query(value = "select te.name_type_employee,count(e.id_employee) from employees e join type_employees te on e.id_employee=te.id_type_employee GROUP BY te.name_type_employee ORDER BY COUNT(e.id_employee)DESC limit 1",nativeQuery = true)
+	public List<String[]> typeTop();
 
 }

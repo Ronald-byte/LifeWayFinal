@@ -83,6 +83,9 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/roles/list}">Roles</a>
 					</div>
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/brands/reports}">Reportes</a>
+					</div>
 				</div></li>
 
 
@@ -163,6 +166,29 @@
 
 					<a th:href="@{/bikes/new/}" class="btn btn-secondary btn-xs">Nuevo</a>
 
+					<form th:action="@{/bikes/search}" method="post"
+					th:object="${bike}">
+					<div class="form-group">
+						<table>
+
+							<tbody>
+								<tr>
+									<td><label for="idBike"
+										class="col-sm-2 col-form-label">Buscar:</label></td>
+									<td><input type="number" class="form-control"
+										th:field="*{idBike}" id="idBike"
+										placeholder="ID Bicicleta" required="required" step="0" min="0"></input></td>
+									<td><button type="submit" class="btn btn-secondary btn-xs">
+											<i class="iconf fa fa-search" style="color: white;"></i>
+										</button></td>
+									<td><a href="/bikes/list" class="btn btn-secondary btn-xs">Limpiar</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</form>
+
 					<hr class="sidebar-divider">
 
 					<table class="table table-striped">
@@ -173,17 +199,23 @@
 								<th scope="col">Costo</th>
 								<th scope="col">Fecha de Compra</th>
 								<th scope="col">Estado</th>
-
-
+								<th scope="col">Operación</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="b: ${listBike}">
-								<td th:text="${b.idBike}"></td>
+								<td><a class="btn btn-danger btn-xs"
+									th:href="@{/bikes/view/} + ${b.idBike}"
+								    th:text="${b.idBike}"></a></td>
 								<td th:text="${b.brand.nameBrand}"></td>
 								<td th:text="${b.costBike}"></td>
-								<td th:text="${b.purchaseDateBike}"></td>
+								<td th:text="${#dates.format(b.purchaseDateBike,'dd/MM/yyyy')}"></td>
 								<td th:text="${b.status.nameStatus}"></td>
+								<td> 
+									<a th:href="@{'/bikes/irupdate/'+${b.idBike}}">
+									<i class="iconf fa fa-pen" style="color:green"></i>
+									</a>
+									</td>
 							</tr>
 						</tbody>
 					</table>

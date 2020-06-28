@@ -1,6 +1,7 @@
 package pe.edu.upc.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,18 +74,28 @@ public class TypeEmployeeController {
 			return "typeEmployee/typeEmployee";
 		}
 	}
-	
+
 	@RequestMapping("/search")
-	public String searchTypeEmployees(Model model,@Validated TypeEmployee typeEmployee) throws ParseException
-	{
+	public String searchTypeEmployees(Model model, @Validated TypeEmployee typeEmployee) throws ParseException {
 		List<TypeEmployee> listTypeEmployee;
-		listTypeEmployee=teS.findByNameTypeEmployeeFull(typeEmployee.getNameTypeEmployee());
+		listTypeEmployee = teS.findByNameTypeEmployeeFull(typeEmployee.getNameTypeEmployee());
 		if (listTypeEmployee.isEmpty()) {
 			model.addAttribute("mensaje", "No se encontró");
 		}
 		model.addAttribute("listTypeEmployee", listTypeEmployee);
 		return "typeEmployee/listTypeEmployee";
-		
+
+	}
+
+	@RequestMapping("/reporte2")
+	public String typeTop(Map<String, Object> model) {
+		model.put("listTypeEmployeeTop", teS.typetop());
+		return "reports/typeTop";
+	}
+
+	@RequestMapping("/reports")
+	public String Report() {
+		return "reports/reports";
 	}
 
 }

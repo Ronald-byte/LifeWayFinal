@@ -85,6 +85,9 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/roles/list}">Roles</a>
 					</div>
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/brands/reports}">Reportes</a>
+					</div>
 				</div></li>
 
 
@@ -180,10 +183,10 @@
 											th:field="*{nameTypeEmployee}" id="nameTypeEmployee"
 											placeholder="Nombre tipo de empleado" required="required"
 											pattern=[A-Za-z]+></input></td>
-										<td><button type="submit" class="btn btn-danger">
+										<td><button type="submit" class="btn btn-secondary btn-xs">
 												<i class="iconf fa fa-search" style="color: white;"></i>
 											</button></td>
-										<td><a href="/typeEmployees/list" class="btn btn-danger">Limpiar</a></td>
+										<td><a href="/typeEmployees/list" class="btn btn-secondary btn-xs">Limpiar</a></td>
 									</tr>
 								</tbody>
 							</table>

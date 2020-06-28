@@ -82,6 +82,9 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/roles/list}">Roles</a>
 					</div>
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/brands/reports}">Reportes</a>
+					</div>
 				</div></li>
 
 			<!-- Sidebar Toggler (Sidebar) -->
@@ -154,7 +157,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Empleado</h1>
+					<h1 class="h3 mb-4 text-gray-800">Boleta de Alquiler</h1>
 
 					<hr class="sidebar-divider">
 					
@@ -162,6 +165,16 @@
 					<form th:action="@{/rentalTickets/save}" th:object="${rentalTicket}"
 						method="post">
 						
+						<div class="form-group row">
+							<label for="number" class="col-sm-2 col-form-label">ID:</label>
+							<div class="col-sm-6">
+								<input type="number" th:field="*{idRentalTicket}" class="form-control"
+									th:errorclass="'form-control alert-danger'"readonly="readonly" /> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('idRentalTicket')}"
+									th:errors="*{idRentalTicket}"></small>
+							</div>
+						</div>
 						<div class="form-group row">
 							<label for="date" class="col-sm-2 col-form-label">Fecha de Alquiler:</label>
 							<div class="col-sm-6">
@@ -187,7 +200,7 @@
 							<label for="cost" class="col-sm-2 col-form-label">Tarifa de Venta:</label>
 							<div class="col-sm-6">
 								<input type="number" th:field="*{costRateRentalTicket}" class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
+									th:errorclass="'form-control alert-danger'"readonly="readonly" /> <small
 									class="form-text text-danger"
 									th:if="${#fields.hasErrors('costRateRentalTicket')}"
 									th:errors="*{costRateRentalTicket}"></small>
@@ -201,16 +214,6 @@
 										th:text="${c.nameCustomer}"
 										th:selected="(${c.idCustomer} == *{customer.idCustomer})"></option>
 								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label for="totalcost" class="col-sm-2 col-form-label">Costo total de Venta:</label>
-							<div class="col-sm-6">
-								<input type="number" th:field="*{totalCostRentalTicket}" class="form-control"
-									th:errorclass="'form-control alert-danger'" /> <small
-									class="form-text text-danger"
-									th:if="${#fields.hasErrors('totalCostRentalTicket')}"
-									th:errors="*{totalCostRentalTicket}"></small>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -260,7 +263,7 @@
 		<footer class="sticky-footer bg-white">
 			<div class="container my-auto">
 				<div class="copyright text-center my-auto">
-					<span>Copyright &copy; Web 2020</span>
+					<span>Copyright &copy; Grupo 1 2020</span>
 				</div>
 			</div>
 		</footer>

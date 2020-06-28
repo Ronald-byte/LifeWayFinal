@@ -82,6 +82,9 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<a class="collapse-item" th:href="@{/roles/list}">Roles</a>
 					</div>
+					<div class="bg-white py-2 collapse-inner rounded">
+						<a class="collapse-item" th:href="@{/brands/reports}">Reportes</a>
+					</div>
 				</div></li>
 
 
@@ -183,11 +186,11 @@
 						<tbody>
 							<tr th:each="r: ${listRentalTicket}">
 								<td th:text="${r.idRentalTicket}"></td>
-								<td th:text="${r.rentalDateRentalTicket}"></td>
+								<td th:text="${#dates.format(r.rentalDateRentalTicket,'dd/MM/yyyy')}"></td>
 								<td th:text="${r.numberHoursRentalTicket}"></td>
 								<td th:text="${r.costRateRentalTicket}"></td>
 								<td th:text="${r.customer.nameCustomer}"></td>
-								<td th:text="${r.totalCostRentalTicket}"></td>
+								<td th:text="${r.totalCostRentalTicket()}"></td>
 								<td th:text="${r.bike.idBike}"></td>								
 								<td th:text="${r.employee.nameEmployee}"></td>
 								<td><a
