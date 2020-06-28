@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.edu.upc.entity.Bike;
 import pe.edu.upc.entity.Customer;
 import pe.edu.upc.repository.ICustomerRepository;
 import pe.edu.upc.serviceinterface.ICustomerService;
@@ -54,4 +53,11 @@ public class CustomerServiceImpl implements ICustomerService {
 	{
 		return cR.findById(idCustomer);
 	}
+	
+	@Override
+	public List<String[]> customertop() {
+		// TODO Auto-generated method stub
+		return cR.customerTop();
+	}
+	
 }

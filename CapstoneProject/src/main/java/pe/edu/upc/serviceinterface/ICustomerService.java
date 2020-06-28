@@ -11,4 +11,5 @@ public interface ICustomerService {
 	List<Customer> list();
 	List<Customer> findNameCustumerFull(int idCustomer);
 	Optional<Customer> searchId(int idCustomer);
+	public List<String[]> customertop();
 }

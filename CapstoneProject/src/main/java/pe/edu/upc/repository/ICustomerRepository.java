@@ -17,6 +17,9 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer>{
 	
 	@Query("select c from Customer c where c.idCustomer = :busqueda")
 	List<Customer> findBynameCustomer(@Param("busqueda")int idCustomer);
+	
+	@Query(value = "select c.name_customer,count(rt.id_rental_ticket) from rental_tickets rt join customers c on rt.id_customer=c.id_customer GROUP BY c.name_customer ORDER BY COUNT(rt.id_rental_ticket)DESC",nativeQuery = true)
+	public List<String[]> customerTop();
 }
 
 

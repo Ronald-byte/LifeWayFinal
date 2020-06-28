@@ -2,6 +2,7 @@ package pe.edu.upc.controller;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,4 +94,18 @@ public class CustomerController {
 			return "customer/customerUpdate";
 		}
 	}
+	
+	
+	@RequestMapping("/reporte1")
+	public String customerTop(Map<String, Object> model) {
+		model.put("listCustomerTop", cS.customertop());
+		return "reports/customerTop";
+}
+	@RequestMapping("/reports")
+	public String Report()
+	{
+		return "reports/reports";
+	}
+	
+	
 }
