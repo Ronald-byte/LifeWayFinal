@@ -75,7 +75,7 @@ public class BrandController {
 	@RequestMapping("/reporte1")
 	public String brandTop(Map<String, Object> model) {
 		model.put("listBrandTop", bS.brandtop());
-		return "redirect:reports/brandTop";
+		return "reports/brandTop";
 }
 	@RequestMapping("/reports")
 	public String Report()
