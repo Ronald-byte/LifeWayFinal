@@ -26,7 +26,7 @@ public class Bike implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idBike;
+	private long idBike;
 
 	@ManyToOne
 	@JoinColumn(name = "idBrand")
@@ -50,7 +50,7 @@ public class Bike implements Serializable {
 	private String photoBike;
 
 	
-	public Bike(int idBike, Brand brand, Double costBike, Date purchaseDateBike, Status status, String photoBike) {
+	public Bike(long idBike, Brand brand, Double costBike, Date purchaseDateBike, Status status, String photoBike) {
 		super();
 		this.idBike = idBike;
 		this.brand = brand;
@@ -65,11 +65,11 @@ public class Bike implements Serializable {
 		super();
 	}
 
-	public int getIdBike() {
+	public long getIdBike() {
 		return idBike;
 	}
 
-	public void setIdBike(int idBike) {
+	public void setIdBike(long idBike) {
 		this.idBike = idBike;
 	}
 

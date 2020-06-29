@@ -11,4 +11,5 @@ public interface IBikeService {
 	Optional<Bike>searchId(int idBike);
 	public void update(Bike bike) ;
 	public List<Bike> search(int busqueda);
+	public List<String[]> bikeTop();
 }

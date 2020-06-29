@@ -45,4 +45,9 @@ public class BikeServiceImpl implements IBikeService {
 	public List<Bike> search(int busqueda) {
 		return bR.search(busqueda);
 	}
+
+	@Override
+	public List<String[]> bikeTop() {
+		return bR.bikeTop();
+	}
 }
