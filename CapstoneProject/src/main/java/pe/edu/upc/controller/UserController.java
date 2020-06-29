@@ -36,7 +36,7 @@ public class UserController {
 			users.setPassword(password);
 			uS.insert(users);
 			model.addAttribute("listUsers", uS.list());
-			return "redirect:/user/listUsers";
+			return "redirect:/users/list";
 
 		}
 	}

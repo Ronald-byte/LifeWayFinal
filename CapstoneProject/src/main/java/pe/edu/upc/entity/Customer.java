@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -31,6 +32,7 @@ public class Customer implements Serializable {
     @Column(name = "maternalSurnameCustomer", nullable = false, length = 30)
     private String maternalSurnameCustomer;
     
+	@Email(message = "Formato de correo invalido")
     @Column(name = "emailCustomer", nullable = false, length = 30)
     private String emailCustomer;
     
