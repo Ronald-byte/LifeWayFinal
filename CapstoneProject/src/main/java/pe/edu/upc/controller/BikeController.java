@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.ParseException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -158,7 +159,7 @@ public class BikeController {
 	@RequestMapping("/search")
 	public String searchBikes(Model model, @Validated Bike bike) throws ParseException {
 		List<Bike> listBikes;
-		listBikes = bS.search(bike.getIdBike());
+		listBikes = bS.search((int)bike.getIdBike());
 		model.addAttribute("bike", new Bike());
 		if (listBikes.isEmpty()) {
 
@@ -167,6 +168,12 @@ public class BikeController {
 		model.addAttribute("listBike", listBikes);
 		return "bike/listBike";
 
+	}
+
+	@RequestMapping("/reportBikeTop")
+	public String bikeTop5(Map<String, Object> model) {
+		model.put("listBikeTop", bS.bikeTop());
+		return "reports/bikeTop";
 	}
 	
 }
