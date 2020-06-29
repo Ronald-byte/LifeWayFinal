@@ -182,10 +182,10 @@
 											th:field="*{idCustomer}" id="idCustomer"
 											placeholder="DNI cliente" required="required"
 											pattern=[0-9]+></input></td>
-										<td><button type="submit" class="btn btn-danger">
+										<td><button type="submit" class="btn btn-secondary">
 												<i class="iconf fa fa-search" style="color: white;"></i>
 											</button></td>
-										<td><a href="/customers/list" class="btn btn-danger">Limpiar</a></td>
+										<td><a href="/customers/list" class="btn btn-secondary">Limpiar</a></td>
 									</tr>
 								</tbody>
 							</table>
@@ -221,7 +221,7 @@
 								<td th:text="${cate.enabled}"></td>
 								<td> 
 								<a th:href="@{'/customers/irupdate/'+${cate.idCustomer}}">
-								<i class="iconf fa fa-pen" style="color:orange"></i>
+								<i class="iconf fa fa-pen" style="color:green"></i>
 								</a>
 								</td>
 							</tr>
