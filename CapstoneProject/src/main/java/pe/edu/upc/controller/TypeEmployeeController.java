@@ -46,6 +46,7 @@ public class TypeEmployeeController {
 				model.addAttribute("mensaje", "Ya existe el Tipo de empleado");
 				return "typeEmployee/typeEmployee";
 			} else {
+				model.addAttribute("mensaje", "Seguardo correctamente");
 				model.addAttribute("listTypeEmployee", teS.list());
 				return "typeEmployee/listTypeEmployee";
 			}

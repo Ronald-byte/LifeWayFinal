@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "TypeEmployees")
@@ -19,8 +21,8 @@ public class TypeEmployee implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idTypeEmployee;
 
-	
-	//@Pattern(regexp = "[A-Z][a-z]*",message = "Ingrese el tipo de empleado nuevamente")
+	@NotBlank
+	@Pattern(regexp = "[a-zA-Z-' ']+", message = "El nombre solo puede tener caracteres")
 	@Column(name = "nameTypeEmployee", nullable = false, length = 30)
 	private String nameTypeEmployee;
 

@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
@@ -23,11 +24,13 @@ public class Users implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private int id;
 
+	@NotBlank
 	@Column(length = 30, unique = true, nullable = false)
 	private String username;
 
+	@NotBlank
 	@Column(length = 200, nullable = false)
 	private String password;
 
@@ -37,11 +40,27 @@ public class Users implements Serializable {
 	@JoinColumn(name = "user_id")
 	private List<Role> roles;
 
-	public Long getId() {
+	
+	
+	public Users() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Users(int id, String username, String password, Boolean enabled, List<Role> roles) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.enabled = enabled;
+		this.roles = roles;
+	}
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

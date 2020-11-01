@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Positive;
 
@@ -34,6 +35,7 @@ public class Bike implements Serializable {
 
 	@Positive(message = "El monto debe de ser positivo")
 	@Column(name = "costBike", nullable = false, columnDefinition = "Decimal(8,2)")
+	@NotNull
 	private Double costBike;
 
 
@@ -41,6 +43,7 @@ public class Bike implements Serializable {
 	@Column(name = "purchaseDateBike", nullable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	private Date purchaseDateBike;
 	
 	@ManyToOne

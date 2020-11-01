@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -17,7 +19,9 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "idCustomer", nullable = false, length = 30)
+	@Column(name = "idCustomer", nullable = false, unique=true)
+	@Max(99999999)
+	@Min(10000000)
     private int idCustomer;
 	
 	@Pattern(regexp = "[a-zA-Z]+", message = "El nombre solo puede tener caracteres")

@@ -15,8 +15,12 @@ public class UserServiceImpl implements IUserService {
 	private UserRepository uR;
 
 	@Override
-	public void insert(Users users) {
-		uR.save(users);
+	public int insert(Users users) {
+		int rpta=uR.seachusername(users.getUsername());
+		if(rpta==0) {
+			uR.save(users);
+		}
+		return rpta;
 	}
 
 	@Override

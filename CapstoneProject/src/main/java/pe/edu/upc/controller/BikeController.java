@@ -90,14 +90,14 @@ public class BikeController {
 				bS.update(bike);
 				model.addAttribute("listBike", bS.list());
 				model.addAttribute("mensaje", "Se actualizo correctamente");
-				return "redirect:/bikes/list";
+				return "bike/listbike";
 			} else {
 
 
 			bS.insert(bike);
 			model.addAttribute("mensaje", "Se guardó correctamente");
 			model.addAttribute("listBike", bS.list());
-			return "redirect:/bikes/list";
+			return "bike/listbike";
 			}
 		}
 	}

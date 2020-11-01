@@ -32,10 +32,11 @@ public class RolController {
 	@PostMapping("/save")
 	public String saveRole(@Validated Role role, BindingResult result, Model model) throws Exception {
 		if (result.hasErrors()) {
-			return "role/role";
+			model.addAttribute("listRoles",rS.list());
+			return "rol/role";
 		} else {
 			rS.insert(role);
-			model.addAttribute("listRoles", rS.list());
+			model.addAttribute("listRoles",rS.list());
 			return "rol/listRoles";
 		}
 	}
@@ -43,6 +44,7 @@ public class RolController {
 	public String listRole(Model model) {
 		try {
 			model.addAttribute("listRoles", rS.list());
+			model.addAttribute("role",new Role());
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());
 		}

@@ -43,11 +43,12 @@ public class CustomerController {
 			int rpta = cS.insert(customer);
 			if (rpta > 0)
 			{
-				cS.update(customer);
-				model.addAttribute("mensaje", "Se actualizo correctamente");
-				return "redirect:/customers/list";
+				model.addAttribute("mensaje", "Ya existe el Cliente");
+				model.addAttribute("listCustomer", cS.list());
+				return "customer/customer";
 			}else
 			{
+				cS.insert(customer);
 				model.addAttribute("listCustomer", cS.list());
 				model.addAttribute("mensaje", "Se registro correctamente");
 				return "customer/listCustomer";
