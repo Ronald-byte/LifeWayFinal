@@ -30,6 +30,7 @@ public class Bike implements Serializable {
 	private int idBike;
 
 	@ManyToOne
+	@NotNull(message = "Ingrese la marca de la bicicleta")
 	@JoinColumn(name = "idBrand")
 	private Brand brand;
 
@@ -47,6 +48,7 @@ public class Bike implements Serializable {
 	private Date purchaseDateBike;
 	
 	@ManyToOne
+	@NotNull(message = "Ingrese el estado de la bicicleta")
 	@JoinColumn(name = "idStatus")
 	private Status status;
 
