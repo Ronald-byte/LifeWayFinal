@@ -37,6 +37,7 @@ public class RentalTicket implements Serializable {
  @Column(name = "costRateRentalTicket")
  private int costRateRentalTicket = 5; 
  
+ @NotNull(message = "Ingrese un cliente")
  @ManyToOne
  @JoinColumn(name = "idCustomer")
  private Customer customer;
@@ -45,10 +46,12 @@ public class RentalTicket implements Serializable {
 	 return numberHoursRentalTicket * costRateRentalTicket;
  }
  
+ @NotNull(message = "Ingrese una bicicleta")
  @ManyToOne
  @JoinColumn(name = "idBike")
  private Bike bike;
  
+ @NotNull(message = "Ingrese un empleado")
  @ManyToOne
  @JoinColumn(name = "idEmployee")
  private Employee employee;

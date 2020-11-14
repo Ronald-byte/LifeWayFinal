@@ -36,16 +36,14 @@ public class UserController {
 			if(rpta > 0)
 			{
 				model.addAttribute("mensaje", "ya existe el usuario");
-				return "redirect:users/new";
+				return "user/user";
 			}else {
 			String password = new BCryptPasswordEncoder().encode(users.getPassword());
 			users.setPassword(password);
 			model.addAttribute("mensaje", "Se guardo correctamente");
 			model.addAttribute("listUsers", uS.list());
-			return "redirect:users/list";	
+			return "user/listUsers";	
 			}
-			
-
 		}
 	}
 
